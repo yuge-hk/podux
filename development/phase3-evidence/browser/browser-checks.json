@@ -1,0 +1,309 @@
+{
+  "checks": [
+    "Unauthenticated /tunnels redirects to existing login",
+    "Existing login and empty Tunnel page",
+    "Create two real persisted profiles through the form",
+    "Edit retains empty Token and saves full advanced config",
+    "Profiles persist after page reload",
+    "Mobile Start 202 is observed as local invalid-token failure, not connected",
+    "Mobile Restart calls actual backend",
+    "Mobile edit/save",
+    "Mobile create, scrollable form and advanced settings",
+    "Mobile details and safe logs",
+    "390px no global horizontal overflow",
+    "Mobile Stop request (UI running state fixture; real backend endpoint)",
+    "Chinese dark theme",
+    "320px no horizontal overflow",
+    "Existing server/proxy/dashboard pages render with authenticated real APIs",
+    "Confirmed deletion updates real persisted list",
+    "Unavailable binary UI degrades with editing retained (capability fixture)",
+    "No Tunnel Token in browser storage, displayed text, URL or console; no page errors"
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/start"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/restart"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/xw2x1zbm1nwccgs/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/logs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/logs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/xw2x1zbm1nwccgs/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/stop"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/xw2x1zbm1nwccgs/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/xw2x1zbm1nwccgs/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/cloudflared/tunnels/xw2x1zbm1nwccgs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/jvakalh0wdw5c2h/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/tunnels/g1n99qcvkqx8yjp/status"
+    },
+    {
+      "method": "GET",
+      "path": "/api/cloudflared/capabilities"
+    }
+  ],
+  "limits": [
+    "Synthetic invalid Token only; no successful Cloudflare connection",
+    "Stop UI and missing binary scenarios use explicit fixtures",
+    "FRPC regression uses empty disposable database; no live FRP server"
+  ]
+}

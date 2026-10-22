@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Mobile Start creates two real fixture child processes and observes readiness",
+    "Independent loopback Metrics endpoints and collected connection gauges",
+    "Mobile Stop terminates A's real child while B keeps running",
+    "Mobile Restart starts a replacement child with a new generation",
+    "Saving a live config keeps the old run until explicit restart",
+    "Explicit Token replacement and Restart now apply the saved revision",
+    "A real concurrent API edit produces 409 and preserves the browser draft",
+    "Actual backend log epoch and safe child lifecycle events reach the viewer",
+    "Desktop dark Chinese rendering with fixture running states"
+  ],
+  "fixture": "Go test-only connector; no Cloudflare networking or real account",
+  "passed": 9
+}

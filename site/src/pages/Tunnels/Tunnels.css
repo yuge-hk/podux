@@ -1,0 +1,56 @@
+.tunnels-page {
+  min-width: 0;
+}
+.tunnels-page .rt-Card {
+  min-width: 0;
+}
+.tunnel-dialog {
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+}
+.tunnels-page p,
+.tunnel-dialog dd {
+  overflow-wrap: anywhere;
+}
+.tunnel-log {
+  max-height: 280px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 12px;
+  background: var(--gray-2);
+  border-radius: var(--radius-2);
+  font-size: 12px;
+}
+.tunnel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.tunnel-info {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);
+  gap: 8px 16px;
+  font-size: 14px;
+}
+.tunnel-info dd {
+  margin: 0;
+}
+.tunnels-page summary,
+.tunnel-dialog summary {
+  cursor: pointer;
+  color: var(--accent-11);
+}
+@media (max-width: 760px) {
+  .tunnel-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tunnels-page .rt-Heading {
+    font-size: 24px;
+  }
+  .tunnel-dialog {
+    max-width: calc(100vw - 24px);
+    padding: 16px;
+  }
+}

@@ -95,3 +95,24 @@ The Vite development server listens on `0.0.0.0` and proxies `/api` to `127.0.0.
 - `github_handler.go` and its service exist, but their wiring and registration are commented out in `main.go`; they must not be treated as a published API.
 - No graceful-shutdown hook for `MonitorService` was found; it currently relies on process termination.
 - No formal repository-level backup/restore, horizontal-scaling, or multi-instance mutual-exclusion design was found.
+
+## Local cloudflared backend
+
+`main.go` now wires the independent [Tunnel service](../internal/application/tunnel/service.go),
+[domain contracts](../internal/domain/tunnel/model.go),
+[PocketBase repository](../internal/infrastructure/persistence/tunnel_repository.go),
+[OS process runner](../internal/infrastructure/cloudflared/runner.go) and
+[HTTP handler](../internal/interfaces/http/tunnel_handler.go). FRPC remains embedded
+and is unchanged. The serve hook probes a separately installed cloudflared,
+opens the external master key, locks the runtime directory and restores autoStart
+profiles after successful listener setup. OnTerminate cancels recovery and waits
+for cloudflared cleanup. The authenticated `/tunnels` React route now provides local connector management
+using the existing layout/authentication, Radix components and bilingual resources.
+Its API client uses the existing Authorization helper; state/log polling is bounded
+and visibility-aware. Application commands/configuration mutations are locked per
+profile so long Stop operations do not block unrelated profiles.
+
+See [API, security, lifecycle and platform limits](../docs/api/cloudflared.md) and
+[verification evidence](cloudflared-validation.md). CI now runs backend tests and
+includes native Linux/macOS/Windows module-test jobs; native jobs are not evidence
+of a successful run until CI executes them.

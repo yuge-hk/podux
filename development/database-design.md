@@ -119,3 +119,17 @@ Purpose: daily aggregates. Fields match hourly, and all three value fields are o
 - Metric aggregation performs application-level "lookup then write" operations. Composite indexes are non-unique, so the database does not guarantee idempotent uniqueness.
 - No caller for `fh_version` was found; its purpose remains to be confirmed.
 - The snapshot migration has an empty down function and cannot automatically restore the pre-import schema; rollback strategy remains technical debt.
+
+## Cloudflare Tunnel profiles
+
+The additive, reversible [migration](../migrations/1792713600_cloudflare_tunnels.go)
+creates `fh_cloudflare_tunnels`. Its fields are `name` (text), `config` (JSON),
+`ciphertext` (hidden text), and positive integer `revision`, plus PocketBase ID.
+All collection API rules are nil (locked); custom authenticated APIs validate
+strongly typed configuration. No relation to FRPC collections is introduced.
+The [repository](../internal/infrastructure/persistence/tunnel_repository.go)
+performs revision compare-and-swap updates/deletes. Runtime statuses/PIDs and
+retry budgets are not persisted. Ciphertext uses versioned AES-GCM with record-ID
+associated data; the master key is external to the data directory and must be
+backed up separately. Stop Podux before migration Down; it deletes profile data
+but intentionally preserves the external key. See [contract and backup procedure](../docs/api/cloudflared.md).

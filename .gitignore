@@ -62,3 +62,8 @@ dist-ssr
 *.sln
 *.sw?
 __debug*
+# Cloudflared master keys (default sibling of the PocketBase data directory)
+*.cloudflared-secrets/
+
+# Native verification helper bytecode
+build/ci/__pycache__/

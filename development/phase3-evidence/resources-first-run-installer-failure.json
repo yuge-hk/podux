@@ -1,0 +1,64 @@
+{
+  "status": "Failed",
+  "reason": "children observed after Stop",
+  "children": [
+    {
+      "pid": 179514,
+      "comm": "xdg-open",
+      "stat": "179514 (xdg-open) Z 179472 179467 179467 0 -1 4227084 235 2712 0 2 0 0 2 0 20 0 1 0 11687629 0 0 18446744073709551615 0 0 0 0 0 0 0 0 65538 1 0 0 17 11 0 0 0 0 0 0 0 0 0 0 0 0 0\n"
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "Podux only",
+      "rssKiB": 36092,
+      "threads": 17,
+      "fdCount": 18,
+      "childPids": [
+        179514
+      ],
+      "cpuPercentOneCore": 0.0,
+      "sampleSeconds": 2.000092531001428,
+      "sqliteBytes": 543472
+    },
+    {
+      "label": "one test connector",
+      "rssKiB": 36060,
+      "threads": 17,
+      "fdCount": 21,
+      "childPids": [
+        179514,
+        179538
+      ],
+      "cpuPercentOneCore": 0.0,
+      "sampleSeconds": 2.000167213991517,
+      "sqliteBytes": 543472
+    },
+    {
+      "label": "two test connectors",
+      "rssKiB": 36104,
+      "threads": 17,
+      "fdCount": 24,
+      "childPids": [
+        179514,
+        179538,
+        179546
+      ],
+      "cpuPercentOneCore": 0.49996726239347433,
+      "sampleSeconds": 2.0001309590006713,
+      "sqliteBytes": 543472
+    },
+    {
+      "label": "after repeated start/restart/stop",
+      "rssKiB": 38572,
+      "threads": 18,
+      "fdCount": 18,
+      "childPids": [
+        179514
+      ],
+      "cpuPercentOneCore": 0.0,
+      "sampleSeconds": 2.000078590994235,
+      "sqliteBytes": 543472
+    }
+  ]
+}

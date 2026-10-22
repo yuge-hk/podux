@@ -62,6 +62,11 @@ const navItems = [
     path: "/proxies",
     icon: <Icon icon="lucide:network" width="18" height="18" />,
   },
+  {
+    labelKey: "nav.tunnels",
+    path: "/tunnels",
+    icon: <Icon icon="lucide:cloud" width="18" height="18" />,
+  },
 ];
 
 const mobileBottomNavItems = navItems;
@@ -341,7 +346,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Box className="flex w-full flex-1 flex-col overflow-y-auto">
         <Box
           className="mx-auto box-border min-h-full w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8"
-          style={{ paddingBottom: isMobile ? "72px" : undefined }}
+          style={{ paddingBottom: isMobile ? "88px" : undefined }}
         >
           <AnimatePresence mode="wait" initial={false}>
             <PageTransition key={location.pathname}>{children}</PageTransition>

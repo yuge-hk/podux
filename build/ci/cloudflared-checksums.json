@@ -1,0 +1,10 @@
+{
+  "version": "2026.10.3",
+  "source": "https://api.github.com/repos/cloudflare/cloudflared/releases/tags/2026.10.3",
+  "assets": {
+    "cloudflared-linux-amd64": "053b80b0a23031a038fdbf3c073f59f82b8f1f152aa67971d7383ffafc0dbab0",
+    "cloudflared-linux-arm64": "89297ebfb9e8c99c0dc013a1140601453cf3798d8306c5591651f4a3f5210be8",
+    "cloudflared-windows-amd64.exe": "76b2805253d0d6ffacb092a7acfbee99e7af6917835c0c5410e23f3ef5052da2",
+    "cloudflared-darwin-arm64.tgz": "1165d14b6f6360a3b8c283d7d1100024d6ec7cd9bc9e32519e96150645f3ec55"
+  }
+}

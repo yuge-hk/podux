@@ -1,10 +1,13 @@
 package main
 
 import (
+	"context"
 	"embed"
-	"github.com/spf13/cobra"
 	"io/fs"
 	"log"
+	"os"
+	"sync"
+	"time"
 
 	"podux/internal/application/dashboard"
 	"podux/internal/application/frpc"
@@ -13,7 +16,10 @@ import (
 	"podux/internal/application/proxy"
 	"podux/internal/application/server"
 	"podux/internal/application/system"
+	"podux/internal/application/tunnel"
 	"podux/internal/application/version"
+	"podux/internal/infrastructure/cloudflared"
+	"podux/internal/infrastructure/credentials"
 	"podux/internal/infrastructure/persistence"
 	httphandler "podux/internal/interfaces/http"
 	_ "podux/migrations"
@@ -22,6 +28,7 @@ import (
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
+	"github.com/spf13/cobra"
 )
 
 //go:embed all:pb_public
@@ -77,8 +84,82 @@ func main() {
 		return e.Next()
 	})
 
+	// Cloudflared is wired only for serve; migration commands never create keys
+	// or spawn children. FRPC retains its existing lifecycle.
+	var tunnelLifecycle sync.Mutex
+	var tunnelService *tunnel.Service
+	var releaseTunnelLock func()
+	app.OnTerminate().BindFunc(func(e *core.TerminateEvent) error {
+		tunnelLifecycle.Lock()
+		defer tunnelLifecycle.Unlock()
+		if tunnelService != nil {
+			ctx, cancel := context.WithTimeout(context.Background(), 130*time.Second)
+			defer cancel()
+			if err := tunnelService.Shutdown(ctx); err != nil {
+				app.Logger().Error("Cloudflared shutdown did not complete")
+				return err
+			}
+		}
+		if releaseTunnelLock != nil {
+			releaseTunnelLock()
+		}
+		return e.Next()
+	})
+
 	// register custom routes
-	app.OnServe().BindFunc(func(e *core.ServeEvent) error {
+	app.OnServe().BindFunc(func(e *core.ServeEvent) (serveErr error) {
+		tunnelLifecycle.Lock()
+		defer tunnelLifecycle.Unlock()
+		defer func() {
+			if serveErr != nil && tunnelService != nil {
+				_ = tunnelService.Shutdown(context.Background())
+				if releaseTunnelLock != nil {
+					releaseTunnelLock()
+					releaseTunnelLock = nil
+				}
+			}
+		}()
+		// The filesystem lock is independent of DB locking and held until all
+		// managed children have exited.
+		release, err := cloudflared.LockDataDir(app.DataDir())
+		if err != nil {
+			return err
+		}
+		releaseTunnelLock = release
+		if err := cloudflared.PrepareRuntime(app.DataDir()); err != nil {
+			release()
+			releaseTunnelLock = nil
+			return err
+		}
+		tunnelRepo := persistence.NewTunnelRepository(app)
+		records, err := tunnelRepo.List()
+		if err != nil {
+			release()
+			releaseTunnelLock = nil
+			return err
+		}
+		vault, keyErr := credentials.Open(app.DataDir(), os.Getenv("PODUX_CLOUDFLARED_KEY_FILE"), len(records) > 0)
+		if keyErr == nil {
+			for _, record := range records {
+				if _, err := vault.Decrypt(record.ID, record.Ciphertext); err != nil {
+					keyErr = err
+					break
+				}
+			}
+		}
+		if keyErr != nil {
+			// Keep non-secret config/status APIs available; credentials fail closed.
+			app.Logger().Error("Cloudflared credentials unavailable; restore the associated master key")
+			vault = nil
+		}
+		runner := cloudflared.NewManager(cloudflared.Probe(os.Getenv("PODUX_CLOUDFLARED_BINARY")), app.DataDir())
+		// Avoid a typed nil Vault interface.
+		tunnelService = tunnel.NewService(tunnelRepo, nil, runner)
+		if vault != nil {
+			tunnelService = tunnel.NewService(tunnelRepo, vault, runner)
+		}
+		httphandler.NewTunnelHandler(tunnelService).RegisterHandlers(e)
+
 		// Reset all server statuses to stopped on startup
 		serverService.ResetAllServerStatus()
 		// Reset all proxy statuses to offline on startup
@@ -114,7 +195,11 @@ func main() {
 
 		e.Router.GET("/{path...}", apis.Static(content, true))
 
-		return e.Next()
+		if err := e.Next(); err != nil {
+			return err
+		}
+		go tunnelService.Recover()
+		return nil
 	})
 
 	// Overwrite the default serve command to suppress the default startup banner

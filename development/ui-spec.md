@@ -65,3 +65,29 @@ Hard-coded values such as `#22c55e`, `#E5484D`, `#30A46C`, and `#6b7280` remain 
 - Error state, ErrorBoundary, and form-error presentation do not yet follow a unified shared pattern.
 - ProfileSettings uses native `alert`, Loading defaults to English `Loading...`, and internationalization remains inconsistent.
 - Actual interaction animations do not yet systematically honor `prefers-reduced-motion`.
+
+## Cloudflare Tunnel WebUI
+
+The authenticated `/tunnels` route uses the existing MainLayout and app auth/setup
+guards; its navigation item is appended after the existing FRPC items. The
+[page controller](../site/src/pages/Tunnels/index.tsx) and
+[view](../site/src/pages/Tunnels/TunnelsPage.view.tsx) reuse PageHeader, EmptyState,
+Radix Card/Dialog/AlertDialog, FormItem and Sonner. The scoped
+[stylesheet](../site/src/pages/Tunnels/Tunnels.css) uses two desktop columns and
+single-column cards below 760px, scrollable dialogs and wrapped bounded logs.
+
+The [form](../site/src/pages/Tunnels/TunnelForm.tsx) submits an explicit complete
+configuration and revision. Tokens are password inputs held only in local form
+memory; blank edit input omits Token, and success/close clears it. No raw token
+reveal, arbitrary CLI input, TLS bypass control or binary upload exists.
+Conflicts keep the draft; reloading requires explicit discard confirmation.
+A saved running profile prompts for Restart now/later; it never silently restarts.
+
+[Polling hooks](../site/src/pages/Tunnels/hooks.ts) avoid stacked requests, batch
+status reads four at a time, stop on unmount and suspend in background tabs.
+Controls have per-profile in-flight guards. The
+[log viewer](../site/src/pages/Tunnels/components/TunnelLogViewer.tsx) uses
+Authorization headers and incremental cursors, caps local history at 500 events,
+reports truncation/epoch reset (with a legacy cursor-regression fallback), offers copy and an auto-scroll switch. Logs poll only
+while details are mounted. Readiness is labeled as connector health, not proof
+of end-to-end origin reachability. All new UI text has Chinese/English keys.
