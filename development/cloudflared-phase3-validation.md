@@ -6,8 +6,10 @@ Validation date: 2026-10-23. Base: `1136797a36a2f1186055278351f55e28b907d6d5`.
 Test branch: `feat/local-cloudflare-tunnels`.
 Personal Fork: https://github.com/yuge-hk/podux ; upstream: https://github.com/luckjiawei/podux (read only).
 Authenticated preflight confirmed account `yuge-hk`, direct fork relationship, ADMIN/write permission and Actions enabled.
-The existing `origin` still points to upstream. No commit or push has been made; first test commit/push awaits explicit user authorization.
-GitHub Actions run URL: **Blocked — not yet triggered**. Test commit SHA: **Blocked — not yet created**.
+The existing `origin` still points to upstream. User explicitly authorized test commits/pushes. First test commit was pushed only to the personal Fork feature branch; upstream remains unchanged.
+First GitHub Actions run: https://github.com/yuge-hk/podux/actions/runs/39844432704
+
+Test commit SHA: `cb2f4aeeeb8420b2f496b9f4d098c8717d6e4fce`. First run completed: overall **Failed**. Frontend Passed; macOS job Passed; Linux amd64/arm64 and Windows jobs Failed only at the opt-in FRPC race integration. Evidence: [run metadata](phase3-evidence/actions-39844432704/run.json). No cross compilation was used for these results.
 
 `Passed` means actually executed successfully; `Failed` means actually executed unsuccessfully; `Skipped` means not executed; `Blocked` means a required condition is missing. Cross compilation is never reported as native execution.
 
@@ -15,12 +17,14 @@ GitHub Actions run URL: **Blocked — not yet triggered**. Test commit SHA: **Bl
 
 Workflow: [cloudflared-ci.yml](../.github/workflows/cloudflared-ci.yml). Push to the test branch triggers the first run; workflow_dispatch requires the workflow on the default branch. Permissions are contents:read, with no deployment or publishing jobs. The Docker/release workflow is unchanged by this phase.
 
-| Environment | Native Actions result | Race result |
-| --- | --- | --- |
-| ubuntu-24.04 / amd64 | Blocked: awaiting authorized push | Blocked |
-| ubuntu-24.04-arm / arm64 | Blocked: awaiting authorized push | Blocked |
-| windows-2025 / amd64 | Blocked: awaiting authorized push | Blocked |
-| macos-15 / arm64 | Blocked: awaiting authorized push | Blocked |
+| Environment | Native build/unit tests | Offline race suite | Official binary | FRPC with race | Overall job |
+| --- | --- | --- | --- | --- | --- |
+| ubuntu-24.04 / amd64 | Passed | Passed | Passed | Failed | Failed |
+| ubuntu-24.04-arm / arm64 | Passed | Passed | Passed | Failed | Failed |
+| windows-2025 / amd64 | Passed | Passed | Passed | Failed | Failed |
+| macos-15 / arm64 | Passed | Passed | Passed | Passed | Passed |
+
+First-run evidence under `phase3-evidence/actions-39844432704/<os>-<arch>/` includes native environment, test counts, official binary checksum/provenance, actual outcomes and complete FRPC output. Offline suites explicitly skip the two opt-in tests; both are executed in separate mandatory steps. All four race toolchains ran; none was skipped. First-run FRPC combined functional/race assertions in one execution; follow-up workflow separates non-race functional and race steps, retaining the race failure as a job failure. FRP races are scheduling-dependent: one passing macOS run does not establish the dependency is race-free.
 
 The workflow first runs frozen pnpm install, TypeScript, Vitest, targeted ESLint and Vite build, then provides the built pb_public to native Go jobs. Go comes from go.mod. Each job asserts host, target and hardware architecture, builds and vets, tests the runner/credentials/API/migrations, runs race with CGO when a compiler is present, and records an explicit reason if race cannot run. Failure is not hidden with continue-on-error. Logs and actual outcomes are uploaded even on failure.
 
@@ -45,7 +49,7 @@ Official cloudflared is pinned to **2026.10.3**. Four platform assets and SHA-25
 | Real Cloudflare Edge / two authorized tunnels | Blocked: no authorized disposable test credentials |
 | 1–2 hour soak | Skipped |
 
-The FRPC race failure includes FRP xlog prefix rendering/mutation and Service.stop versus keepControllerWorking. No FRPC source or FRP dependency was changed to make this pass. CI deliberately retains the failing race integration. Existing FRPC reload temporarily interrupts UDP; the regression checks eventual recovery, not uninterrupted UDP service. This remains a merge blocker requiring a separately authorized dependency/runtime fix or upstream resolution.
+The FRPC race failure includes FRP xlog prefix rendering/mutation and Service.stop versus keepControllerWorking. No FRPC source or FRP dependency was changed to make this pass. CI deliberately retains the failing race integration. Existing FRPC reload temporarily interrupts UDP; the regression checks eventual recovery, not uninterrupted UDP service. Native ARM64 also reports UDPProxy.InWorkConn concurrent state access; Windows reports xlog mutation/read races. These are dependency frames, not Runner setup failures. This remains a merge blocker requiring a separately authorized dependency/runtime fix or upstream resolution.
 
 ## Resource and cleanup evidence
 
@@ -61,9 +65,9 @@ The initial new Vitest 3 dependency chain added advisories, including critical f
 
 ## Remaining work and review readiness
 
-1. Obtain explicit first test commit/push approval for the verified personal Fork and test branch.
-2. Commit only reviewed source, CI, documentation and safe evidence; push to the Fork, record actual SHA and Actions URL here.
-3. Inspect every native job, retain failure logs and fix feature-specific compatibility bugs without disabling failing tests.
+1. User authorization, first Fork push and four native executions are complete.
+2. Follow-up separates FRPC functional/race results and records both; no test or assertion is disabled.
+3. Inspect the follow-up native jobs and retain failures.
 4. Resolve or explicitly review the existing FRP race blocker and baseline security findings before merge readiness.
 5. Authorized real Edge testing and long soak remain unverified. Platform-specific orphan-process guarantees require native execution evidence.
 

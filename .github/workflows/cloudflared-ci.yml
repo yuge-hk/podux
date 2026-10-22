@@ -129,11 +129,15 @@ jobs:
         id: frpc
         run: |
           export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
-          if [ '${{ steps.race.outputs.enabled }}' = 'true' ]; then
-            CGO_ENABLED=1 go test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc.json
-          else
-            go test -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc.json
-          fi
+          go test -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc.json
+      - name: Native FRPC coexistence with race detector
+        id: frpc_race
+        if: success() && steps.race.outputs.enabled == 'true'
+        env:
+          CGO_ENABLED: '1'
+        run: |
+          export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+          go test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race.json
       - name: Record actual outcomes
         if: always()
         env:
@@ -143,6 +147,7 @@ jobs:
           OFFICIAL: ${{ steps.official.outcome }}
           DOWNLOAD: ${{ steps.download.outcome }}
           FRPC: ${{ steps.frpc.outcome }}
+          FRPC_RACE: ${{ steps.frpc_race.outcome }}
         run: python build/ci/summarize.py
       - uses: actions/upload-artifact@v4
         if: always()

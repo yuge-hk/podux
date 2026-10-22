@@ -1,0 +1,15 @@
+{
+  "go": {
+    "GOARCH": "arm64",
+    "GOHOSTARCH": "arm64",
+    "GOHOSTOS": "linux",
+    "GOOS": "linux",
+    "GOVERSION": "go1.25.5"
+  },
+  "hardware": "aarch64",
+  "platform": "Linux-6.17.0-1022-azure-aarch64-with-glibc2.39",
+  "repository": "yuge-hk/podux",
+  "sha": "cb2f4aeeeb8420b2f496b9f4d098c8717d6e4fce",
+  "run": "39844432704",
+  "runner": "GitHub Actions 1000000024"
+}

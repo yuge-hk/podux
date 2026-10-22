@@ -6,7 +6,7 @@ from pathlib import Path
 folder = Path("ci-results")
 folder.mkdir(exist_ok=True)
 mapping = {"success": "Passed", "failure": "Failed", "skipped": "Skipped", "cancelled": "Skipped"}
-results = {k.lower(): mapping.get(os.getenv(k), "Skipped") for k in ["BUILD", "UNIT", "RACE", "OFFICIAL", "DOWNLOAD", "FRPC"]}
+results = {k.lower(): mapping.get(os.getenv(k), "Skipped") for k in ["BUILD", "UNIT", "RACE", "OFFICIAL", "DOWNLOAD", "FRPC", "FRPC_RACE"]}
 results["sha"] = os.getenv("GITHUB_SHA", "uncommitted")
 results["run_url"] = f"https://github.com/{os.getenv('GITHUB_REPOSITORY', '')}/actions/runs/{os.getenv('GITHUB_RUN_ID', '')}"
 failed_tests=[]

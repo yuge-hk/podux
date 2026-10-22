@@ -1,0 +1,22 @@
+{
+  "build": "Passed",
+  "unit": "Passed",
+  "race": "Passed",
+  "official": "Passed",
+  "download": "Passed",
+  "frpc": "Failed",
+  "sha": "cb2f4aeeeb8420b2f496b9f4d098c8717d6e4fce",
+  "run_url": "https://github.com/yuge-hk/podux/actions/runs/39844432704",
+  "failed_tests": [
+    {
+      "log": "frpc.json",
+      "package": "podux/internal/integration",
+      "test": "TestFRPCTCPUDPReconnectAndCloudflaredCoexistence"
+    },
+    {
+      "log": "frpc.json",
+      "package": "podux/internal/integration",
+      "test": "package"
+    }
+  ]
+}
