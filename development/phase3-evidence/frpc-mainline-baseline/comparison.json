@@ -1,0 +1,110 @@
+{
+  "baselineRun": "https://github.com/yuge-hk/podux/actions/runs/39847653720",
+  "baselineTestSHA": "6ff9263f6242e5a95b4e127b844642364923a13e",
+  "featureRun": "https://github.com/yuge-hk/podux/actions/runs/39845439391",
+  "featureTestSHA": "c2e6e7d5328add30eec04177a6630cd3e7e42454",
+  "results": [
+    {
+      "platform": "linux-amd64",
+      "baselineFunctional": "Passed",
+      "baselineRace": "Failed",
+      "baselineRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "featureFunctional": "Passed",
+      "featureRace": "Failed",
+      "featureRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()"
+        ],
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "sharedAccessPairs": [
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ]
+    },
+    {
+      "platform": "linux-arm64",
+      "baselineFunctional": "Passed",
+      "baselineRace": "Passed",
+      "baselineRaceAccessPairs": [],
+      "featureFunctional": "Passed",
+      "featureRace": "Failed",
+      "featureRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "sharedAccessPairs": []
+    },
+    {
+      "platform": "windows-amd64",
+      "baselineFunctional": "Passed",
+      "baselineRace": "Failed",
+      "baselineRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()"
+        ]
+      ],
+      "featureFunctional": "Passed",
+      "featureRace": "Failed",
+      "featureRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()"
+        ],
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "sharedAccessPairs": [
+        [
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()"
+        ]
+      ]
+    },
+    {
+      "platform": "darwin-arm64",
+      "baselineFunctional": "Passed",
+      "baselineRace": "Failed",
+      "baselineRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "featureFunctional": "Passed",
+      "featureRace": "Failed",
+      "featureRaceAccessPairs": [
+        [
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()"
+        ],
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ],
+      "sharedAccessPairs": [
+        [
+          "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "github.com/fatedier/frp/client.(*Service).stop()"
+        ]
+      ]
+    }
+  ]
+}

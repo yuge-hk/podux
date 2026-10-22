@@ -1,0 +1,8 @@
+[
+  "A\t.github/workflows/frpc-race-baseline.yml",
+  "A\tbuild/ci/build_frps.py",
+  "A\tbuild/ci/frpc-baseline-provenance.json",
+  "A\tbuild/ci/native_environment.py",
+  "A\tbuild/ci/summarize.py",
+  "A\tinternal/integration/frpc_regression_test.go"
+]
