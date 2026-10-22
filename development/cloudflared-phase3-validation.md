@@ -30,6 +30,28 @@ The workflow first runs frozen pnpm install, TypeScript, Vitest, targeted ESLint
 
 Official cloudflared is pinned to **2026.10.3**. Four platform assets and SHA-256 digests from official release metadata are recorded in `build/ci/cloudflared-checksums.json`; download verification precedes use. The official-binary test uses a synthetic invalid Token for local rejection, never a production credential or real Edge connectivity claim.
 
+## Follow-up native execution
+
+Run: https://github.com/yuge-hk/podux/actions/runs/39845439391 (completed; **Failed**)
+
+Test commit: `c2e6e7d5328add30eec04177a6630cd3e7e42454`.
+This changes test presentation only: FRPC functional regression executes first without race, followed by the same regression with race. Both remain required; a race failure still fails the job. No production code, FRPC runner or dependency was changed. The frontend passed again.
+
+| Platform | Build/unit | Offline race | Official binary | FRPC functional | FRPC race | Overall job |
+| --- | --- | --- | --- | --- | --- | --- |
+| Linux amd64 | Passed | Passed | Passed | Passed | Failed | Failed |
+| Linux arm64 | Passed | Passed | Passed | Passed | Failed | Failed |
+| Windows amd64 | Passed | Passed | Passed | Passed | Failed | Failed |
+| macOS arm64 | Passed | Passed | Passed | Passed | Failed | Failed |
+
+Evidence is retained under `phase3-evidence/actions-39845439391/`. Full Go JSON logs remain in the corresponding run artifacts; checked-in evidence includes test counts/skips, environment, official binary provenance and complete FRPC functional/race output. The macOS follow-up was initially queued, then ran natively and completed. Overall second-run result: **Failed**, solely at the FRPC race steps on all four platforms.
+
+### Process and credential conclusions
+
+On completed native jobs, runner lifecycle tests actually exercise independent Start/Stop/Restart, exit/retry budget, forced-stop timeout, metrics conflicts and credential removal. FRPC functional logs separately confirm TCP/UDP recovery, coexistence, joint shutdown and port cleanup. The official cloudflared executable parses supported flags and rejects a synthetic invalid Token locally; this does not prove healthy Edge connection, connected metrics or graceful draining of live Cloudflare traffic. Those require authorized disposable credentials and remain Blocked.
+
+Linux/macOS process-group termination and Windows CTRL_BREAK with forced-kill fallback must be distinguished. Successful normal shutdown tests do not prove arbitrary descendant cleanup after every parent crash on every OS. Linux-specific parent-death/symlink tests are compiled only for their supported platforms; lower Windows test count is not represented as equivalent Unix security coverage. No untested cross-platform orphan-process guarantee is made.
+
 ## Actual local Linux results
 
 | Verification | Result and scope |
@@ -67,8 +89,14 @@ The initial new Vitest 3 dependency chain added advisories, including critical f
 
 1. User authorization, first Fork push and four native executions are complete.
 2. Follow-up separates FRPC functional/race results and records both; no test or assertion is disabled.
-3. Inspect the follow-up native jobs and retain failures.
+3. Retain native failures as review blockers; no platform is made green by dropping checks.
 4. Resolve or explicitly review the existing FRP race blocker and baseline security findings before merge readiness.
 5. Authorized real Edge testing and long soak remain unverified. Platform-specific orphan-process guarantees require native execution evidence.
 
 No upstream PR, upstream push, release, Docker publication or production change has been performed.
+
+## Final publication record
+
+Both test commits were pushed only to `yuge-hk/podux:feat/local-cloudflare-tunnels`. The final evidence/documentation commit changes no executable code or workflow and uses `[skip ci]` solely to avoid a third duplicate run for recorded results; it does not change or disable any failing case. Test conclusions apply to the exact SHAs above, not an unexecuted code revision. Original FRPC source/models, go.mod/go.sum, Docker publishing and release configuration are unchanged from the base. The working copy retains the upstream remote only; pushes used the explicit personal Fork URL.
+
+No Cloudflare feature-specific compatibility defect was observed in these two runs. No FRPC fix is included because changing FRPC or upgrading FRP is outside the authorized scope. Resolving that dependency race is required before describing the overall CI as Passed or the PR as merge-ready. Baseline vulnerability findings, real Edge validation and long soak limitations remain as recorded above.

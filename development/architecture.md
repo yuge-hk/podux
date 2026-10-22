@@ -88,7 +88,7 @@ The Vite development server listens on `0.0.0.0` and proxies `/api` to `127.0.0.
 
 ## CI and Quality Boundaries
 
-`.github/workflows/ci.yml` runs on pushes to main/dev and pull requests to main. It performs a frozen frontend install, permissive type checking (`continue-on-error`), and a production build; it then downloads the frontend artifact and runs `go vet` and a Linux amd64 build. CI currently does not run `go test`, frontend lint, or the documentation build, but this project's pre-submission baseline requires those checks locally. Pushes to dev also build and publish a multi-architecture container.
+`.github/workflows/ci.yml` runs on pushes to main/dev and pull requests to main. It performs a frozen frontend install, permissive type checking (`continue-on-error`), and a production build; it then downloads the frontend artifact and runs `go vet` and a Linux amd64 build. The Cloudflare extension adds backend tests, frontend tests and targeted frontend lint; documentation build and full existing lint remain part of local verification. Pushes to dev also build and publish a multi-architecture container.
 
 ## To Be Confirmed
 
@@ -113,6 +113,4 @@ and visibility-aware. Application commands/configuration mutations are locked pe
 profile so long Stop operations do not block unrelated profiles.
 
 See [API, security, lifecycle and platform limits](../docs/api/cloudflared.md) and
-[verification evidence](cloudflared-validation.md). CI now runs backend tests and
-includes native Linux/macOS/Windows module-test jobs; native jobs are not evidence
-of a successful run until CI executes them.
+[backend verification](cloudflared-validation.md) and [native Actions results](cloudflared-phase3-validation.md). The independent [native workflow](../.github/workflows/cloudflared-ci.yml) builds the frontend and executes Linux amd64/arm64, Windows amd64 and macOS arm64 tests, pinned official-binary checks and isolated local FRPS regression. Its permissions are read-only. Native results and existing FRP race failures are recorded separately in the validation report.
