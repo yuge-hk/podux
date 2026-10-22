@@ -1,0 +1,456 @@
+{
+  "test_sha": "8ae7bd98818946262a3f830d3279d03eb18e9047",
+  "run_url": "https://github.com/yuge-hk/podux/actions/runs/39851903747",
+  "baseline_sha": "6ff9263f6242e5a95b4e127b844642364923a13e",
+  "baseline_run_url": "https://github.com/yuge-hk/podux/actions/runs/39847653720",
+  "results": [
+    {
+      "platform": "linux-amd64",
+      "go": "1.26.10",
+      "build": "Passed",
+      "functional": "Passed",
+      "race": "Failed",
+      "trials": [
+        {
+          "trial": 1,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:111 +0x533"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0xacf"
+                }
+              ]
+            },
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:112 +0x5a9"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0xaf0"
+                }
+              ]
+            },
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0xa9"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x64"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "result": "Passed",
+          "races": []
+        },
+        {
+          "trial": 3,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0xa9"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x64"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "v068_baseline_race": "Failed",
+      "v068_baseline_races": [
+        {
+          "category": "service_controller",
+          "accesses": [
+            {
+              "kind": "Write",
+              "function": "github.com/fatedier/frp/client.(*Service).stop()",
+              "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:501 +0x20e"
+            },
+            {
+              "kind": "Previous read",
+              "function": "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+              "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:286 +0x4f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "platform": "linux-arm64",
+      "go": "1.26.10",
+      "build": "Passed",
+      "functional": "Passed",
+      "race": "Failed",
+      "trials": [
+        {
+          "trial": 1,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0x88"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x5c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0x88"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x5c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 3,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0x88"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x5c"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "v068_baseline_race": "Passed",
+      "v068_baseline_races": []
+    },
+    {
+      "platform": "windows-amd64",
+      "go": "1.26.10",
+      "build": "Passed",
+      "functional": "Passed",
+      "race": "Failed",
+      "trials": [
+        {
+          "trial": 1,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0xa9"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x64"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "result": "Passed",
+          "races": []
+        },
+        {
+          "trial": 3,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0xa9"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x64"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "v068_baseline_race": "Failed",
+      "v068_baseline_races": [
+        {
+          "category": "xlog_prefix",
+          "accesses": [
+            {
+              "kind": "Write",
+              "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+              "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.68.0/pkg/util/xlog/xlog.go:85 +0xa9"
+            },
+            {
+              "kind": "Previous read",
+              "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+              "source": "C:/Users/runneradmin/go/pkg/mod/github.com/fatedier/frp@v0.68.0/pkg/util/xlog/xlog.go:115 +0x70b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "platform": "darwin-arm64",
+      "go": "1.26.10",
+      "build": "Passed",
+      "functional": "Passed",
+      "race": "Failed",
+      "trials": [
+        {
+          "trial": 1,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:111 +0x3dc"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0x838"
+                }
+              ]
+            },
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:112 +0x430"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0x84c"
+                }
+              ]
+            },
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0x88"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x5c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 2,
+          "result": "Failed",
+          "races": [
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:111 +0x3dc"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0x838"
+                }
+              ]
+            },
+            {
+              "category": "udp_proxy",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:112 +0x430"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/client/proxy/udp.go:168 +0x84c"
+                }
+              ]
+            },
+            {
+              "category": "xlog_prefix",
+              "accesses": [
+                {
+                  "kind": "Write",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:85 +0x88"
+                },
+                {
+                  "kind": "Previous read",
+                  "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+                  "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.71.1/pkg/util/xlog/xlog.go:115 +0x5c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "trial": 3,
+          "result": "Passed",
+          "races": []
+        }
+      ],
+      "v068_baseline_race": "Failed",
+      "v068_baseline_races": [
+        {
+          "category": "service_controller",
+          "accesses": [
+            {
+              "kind": "Write",
+              "function": "github.com/fatedier/frp/client.(*Service).stop()",
+              "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:501 +0x17c"
+            },
+            {
+              "kind": "Previous read",
+              "function": "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+              "source": "/Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:286 +0x50"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "earlier_v068_feature_races": [
+    {
+      "category": "udp_proxy",
+      "accesses": [
+        {
+          "kind": "Write",
+          "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/proxy/udp.go:102 +0x354"
+        },
+        {
+          "kind": "Previous read",
+          "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/proxy/udp.go:159 +0x7e0"
+        }
+      ]
+    },
+    {
+      "category": "udp_proxy",
+      "accesses": [
+        {
+          "kind": "Write",
+          "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/proxy/udp.go:103 +0x3a8"
+        },
+        {
+          "kind": "Previous read",
+          "function": "github.com/fatedier/frp/client/proxy.(*UDPProxy).InWorkConn()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/proxy/udp.go:159 +0x7f4"
+        }
+      ]
+    },
+    {
+      "category": "xlog_prefix",
+      "accesses": [
+        {
+          "kind": "Write",
+          "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).renderPrefixString()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/pkg/util/xlog/xlog.go:85 +0x88"
+        },
+        {
+          "kind": "Previous read",
+          "function": "github.com/fatedier/frp/pkg/util/xlog.(*Logger).Tracef()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/pkg/util/xlog/xlog.go:115 +0x514"
+        }
+      ]
+    },
+    {
+      "category": "service_controller",
+      "accesses": [
+        {
+          "kind": "Write",
+          "function": "github.com/fatedier/frp/client.(*Service).stop()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:501 +0x17c"
+        },
+        {
+          "kind": "Previous read",
+          "function": "github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()",
+          "source": "/home/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:286 +0x50"
+        }
+      ]
+    }
+  ]
+}

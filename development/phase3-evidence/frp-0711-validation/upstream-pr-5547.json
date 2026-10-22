@@ -1,0 +1,1 @@
+{"html_url":"https://github.com/fatedier/frp/pull/5547","merge_commit_sha":"d5636108e659ea6ba177aa347ffec008bb10fe3e","merged":true,"merged_at":"2026-10-08T13:22:44Z","number":5547,"state":"closed","title":"[fix] race condition when trying to reconnect"}

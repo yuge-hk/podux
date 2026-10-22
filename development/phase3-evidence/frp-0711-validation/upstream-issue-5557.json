@@ -1,0 +1,1 @@
+{"closed_at":"2026-10-09T04:27:26Z","html_url":"https://github.com/fatedier/frp/issues/5557","number":5557,"state":"closed","title":"Data races in frp v0.71.0 client and server (go test -race)"}

@@ -1,0 +1,122 @@
+Native linux-arm64	Native FRPC race trial 1 of 3	﻿2026-10-22T20:49:33.3286335Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3287200Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3287952Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-1.json^[[0m
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3330013Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3330356Z env:
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3330606Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3331013Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib/pkgconfig
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3331419Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3331809Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3332174Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3332591Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3332896Z   CGO_ENABLED: 1
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:49:33.3333070Z ##[endgroup]
+Native linux-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:50:18.9539647Z ##[error]Process completed with exit code 1.
+Native linux-arm64	Native FRPC race trial 2 of 3	﻿2026-10-22T20:50:18.9605510Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9606596Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9607435Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-2.json^[[0m
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9643649Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9644171Z env:
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9644541Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9645005Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib/pkgconfig
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9645527Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9645938Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9646370Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9646944Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9647320Z   CGO_ENABLED: 1
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:18.9647642Z ##[endgroup]
+Native linux-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:50:24.8649878Z ##[error]Process completed with exit code 1.
+Native linux-arm64	Native FRPC race trial 3 of 3	﻿2026-10-22T20:50:24.8696457Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8697483Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8698317Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-3.json^[[0m
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8734386Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8734902Z env:
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8735192Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8735699Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib/pkgconfig
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8736151Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8736554Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8737023Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/arm64
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8737519Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/arm64/lib
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8737909Z   CGO_ENABLED: 1
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:24.8738129Z ##[endgroup]
+Native linux-arm64	Native FRPC race trial 3 of 3	2026-10-22T20:50:30.9725507Z ##[error]Process completed with exit code 1.
+Native linux-amd64	Native FRPC race trial 1 of 3	﻿2026-10-22T20:49:29.6096423Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6096932Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6097362Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-1.json^[[0m
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6149689Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6150047Z env:
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6150207Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6150446Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6150682Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6150895Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6151122Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6151360Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6151539Z   CGO_ENABLED: 1
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:49:29.6151658Z ##[endgroup]
+Native linux-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:09.9626293Z ##[error]Process completed with exit code 1.
+Native linux-amd64	Native FRPC race trial 3 of 3	﻿2026-10-22T20:50:16.3943212Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3943766Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3944201Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-3.json^[[0m
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3997950Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3998160Z env:
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3998326Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3998575Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3998817Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3999039Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3999264Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3999523Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3999706Z   CGO_ENABLED: 1
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:16.3999985Z ##[endgroup]
+Native linux-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:50:21.9568668Z ##[error]Process completed with exit code 1.
+Native darwin-arm64	Native FRPC race trial 1 of 3	﻿2026-10-22T20:52:33.8444100Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8444860Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8445570Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-1.json^[[0m
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8476530Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8476890Z env:
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8477130Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8477580Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8478060Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8478430Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8478820Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8479210Z   CGO_ENABLED: 1
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:52:33.8479360Z ##[endgroup]
+Native darwin-arm64	Native FRPC race trial 1 of 3	2026-10-22T20:53:10.2055340Z ##[error]Process completed with exit code 1.
+Native darwin-arm64	Native FRPC race trial 2 of 3	﻿2026-10-22T20:53:10.2381350Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2382100Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2382770Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-2.json^[[0m
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2563170Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2563480Z env:
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2563730Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2564130Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2564540Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2564920Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2565300Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2565620Z   CGO_ENABLED: 1
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:10.2565790Z ##[endgroup]
+Native darwin-arm64	Native FRPC race trial 2 of 3	2026-10-22T20:53:17.1710290Z ##[error]Process completed with exit code 1.
+Native windows-amd64	Native FRPC race trial 1 of 3	﻿2026-10-22T20:50:51.8401124Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8402107Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8402916Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-1.json^[[0m
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8421776Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8422185Z env:
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8422450Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8422911Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8423365Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8423771Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8424165Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8424517Z   CGO_ENABLED: 1
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:50:51.8424710Z ##[endgroup]
+Native windows-amd64	Native FRPC race trial 1 of 3	2026-10-22T20:52:02.9630719Z ##[error]Process completed with exit code 1.
+Native windows-amd64	Native FRPC race trial 3 of 3	﻿2026-10-22T20:52:13.2339100Z ##[group]Run export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2340155Z ^[[36;1mexport PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"^[[0m
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2340967Z ^[[36;1mgo test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race-3.json^[[0m
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2360779Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2361193Z env:
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2361463Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2361928Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2362396Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2362831Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2363241Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2363587Z   CGO_ENABLED: 1
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:13.2363769Z ##[endgroup]
+Native windows-amd64	Native FRPC race trial 3 of 3	2026-10-22T20:52:21.9374285Z ##[error]Process completed with exit code 1.

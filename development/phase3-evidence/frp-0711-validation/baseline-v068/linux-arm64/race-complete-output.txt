@@ -1,0 +1,6 @@
+=== RUN   TestFRPCTCPUDPReconnectBaseline
+    frpc_regression_test.go:223: Passed: real loopback TCP and UDP traffic through unchanged Podux FRPC service
+    frpc_regression_test.go:276: Passed: single-proxy reload, FRPS outage/reconnect, original topology, FRPC shutdown and port cleanup
+--- PASS: TestFRPCTCPUDPReconnectBaseline (5.13s)
+PASS
+ok  	podux/internal/integration	6.152s

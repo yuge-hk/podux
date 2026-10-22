@@ -1,0 +1,10 @@
+{"Time":"2026-10-22T20:49:29.084161223Z","Action":"start","Package":"podux/internal/integration"}
+{"Time":"2026-10-22T20:49:29.089299007Z","Action":"run","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline"}
+{"Time":"2026-10-22T20:49:29.089359044Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline","Output":"=== RUN   TestFRPCTCPUDPReconnectBaseline\n"}
+{"Time":"2026-10-22T20:49:29.791676965Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline","Output":"    frpc_regression_test.go:223: Passed: real loopback TCP and UDP traffic through unchanged Podux FRPC service\n"}
+{"Time":"2026-10-22T20:49:33.282954703Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline","Output":"    frpc_regression_test.go:276: Passed: single-proxy reload, FRPS outage/reconnect, original topology, FRPC shutdown and port cleanup\n"}
+{"Time":"2026-10-22T20:49:33.292527159Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline","Output":"--- PASS: TestFRPCTCPUDPReconnectBaseline (4.20s)\n"}
+{"Time":"2026-10-22T20:49:33.292564213Z","Action":"pass","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectBaseline","Elapsed":4.2}
+{"Time":"2026-10-22T20:49:33.292579644Z","Action":"output","Package":"podux/internal/integration","Output":"PASS\n"}
+{"Time":"2026-10-22T20:49:33.294708736Z","Action":"output","Package":"podux/internal/integration","Output":"ok  \tpodux/internal/integration\t4.210s\n"}
+{"Time":"2026-10-22T20:49:33.294738487Z","Action":"pass","Package":"podux/internal/integration","Elapsed":4.211}

@@ -1,0 +1,32 @@
+{
+  "build": "Passed",
+  "frpc": "Passed",
+  "frpc_race_1": "Failed",
+  "frpc_race_2": "Passed",
+  "frpc_race_3": "Failed",
+  "frpc_race": "Failed",
+  "sha": "8ae7bd98818946262a3f830d3279d03eb18e9047",
+  "run_url": "https://github.com/yuge-hk/podux/actions/runs/39851903747",
+  "failed_tests": [
+    {
+      "log": "frpc-race-1.json",
+      "package": "podux/internal/integration",
+      "test": "TestFRPCTCPUDPReconnectBaseline"
+    },
+    {
+      "log": "frpc-race-1.json",
+      "package": "podux/internal/integration",
+      "test": "package"
+    },
+    {
+      "log": "frpc-race-3.json",
+      "package": "podux/internal/integration",
+      "test": "TestFRPCTCPUDPReconnectBaseline"
+    },
+    {
+      "log": "frpc-race-3.json",
+      "package": "podux/internal/integration",
+      "test": "package"
+    }
+  ]
+}

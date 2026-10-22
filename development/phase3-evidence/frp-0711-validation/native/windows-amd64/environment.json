@@ -1,0 +1,15 @@
+{
+  "go": {
+    "GOARCH": "amd64",
+    "GOHOSTARCH": "amd64",
+    "GOHOSTOS": "windows",
+    "GOOS": "windows",
+    "GOVERSION": "go1.26.10"
+  },
+  "hardware": "amd64",
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "repository": "yuge-hk/podux",
+  "sha": "8ae7bd98818946262a3f830d3279d03eb18e9047",
+  "run": "39851903747",
+  "runner": "GitHub Actions 1000000041"
+}

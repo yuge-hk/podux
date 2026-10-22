@@ -1,0 +1,15 @@
+{
+  "go": {
+    "GOARCH": "arm64",
+    "GOHOSTARCH": "arm64",
+    "GOHOSTOS": "darwin",
+    "GOOS": "darwin",
+    "GOVERSION": "go1.26.10"
+  },
+  "hardware": "arm64",
+  "platform": "macOS-15.7.9-arm64-arm-64bit",
+  "repository": "yuge-hk/podux",
+  "sha": "8ae7bd98818946262a3f830d3279d03eb18e9047",
+  "run": "39851903747",
+  "runner": "GitHub Actions 1000000042"
+}

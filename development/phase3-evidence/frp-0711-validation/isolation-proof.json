@@ -1,0 +1,88 @@
+{
+  "base": "1136797a36a2f1186055278351f55e28b907d6d5",
+  "feature_untouched_head": "9307c8211aeec2eb4d74811ec922fd455b3f6294",
+  "frpc_test_byte_identical_to": "6ff9263f6242e5a95b4e127b844642364923a13e",
+  "unchanged_application_files": [
+    {
+      "path": "internal/application/dashboard/service.go",
+      "sha256": "2e3066d1529846714d7a103cd303114c4b98773b20cfbeea68713ccd15a173b0"
+    },
+    {
+      "path": "internal/application/frpc/service.go",
+      "sha256": "cdeffdd70a4ed16c2dc73cca4f6e86532c81ff883f11e771ad70cbf5c38f8e76"
+    },
+    {
+      "path": "internal/application/github/service.go",
+      "sha256": "a799c6c26e950de1b9f433769dc51168c082f31241524fd429a30d0391d609d8"
+    },
+    {
+      "path": "internal/application/importer/service.go",
+      "sha256": "9749e81ac93606b50353def8b6b7c971983d985f9b7ae1458fb61a462fb9317d"
+    },
+    {
+      "path": "internal/application/monitoring/metrics.go",
+      "sha256": "671d7f57eeed7d4f5ee7b9ae910294910811593852802ff5039a0a26b53f464c"
+    },
+    {
+      "path": "internal/application/monitoring/monitor.go",
+      "sha256": "972d1ed9ad9720ebd99807d44c2837a077f666ffc9e57eeb1e04a78dd32cc760"
+    },
+    {
+      "path": "internal/application/monitoring/scheduler.go",
+      "sha256": "ac74b5473352ad206b308044447223ddd1a9b07b2934d947edcd895326fd1c34"
+    },
+    {
+      "path": "internal/application/monitoring/service.go",
+      "sha256": "43ad847715ab105b246b6f213f8e9ac2f2f83d46a5621c68b57e6a01142031f7"
+    },
+    {
+      "path": "internal/application/proxy/service.go",
+      "sha256": "a3cac94d7318c00c7dc5cc2bde00d71586d7477419780b2ddf435d67a229734e"
+    },
+    {
+      "path": "internal/application/server/service.go",
+      "sha256": "bd45f2632d42c6be666d3dfc4b39b58f92212ec57767291ace7cdb6c4aba429c"
+    },
+    {
+      "path": "internal/application/system/service.go",
+      "sha256": "65834243a4bbe2f1e7eeb67520c773f7b98e36c20c1653f14cb2b862df762e72"
+    },
+    {
+      "path": "internal/application/version/service.go",
+      "sha256": "5325762521a6550b41035ed22beb6120744b72e5620c3e23dd1d2723adb7dc08"
+    },
+    {
+      "path": "internal/domain/proxy/model.go",
+      "sha256": "07992889715c05c60133a6f2c2dc16b7e531fa5b7d65bb9f0a1126194a618490"
+    },
+    {
+      "path": "internal/domain/proxy/repository.go",
+      "sha256": "85ffc60fd03a3431bcced218e027708dd8a35f7f2a2131769b7fbccc07b16852"
+    },
+    {
+      "path": "internal/domain/server/model.go",
+      "sha256": "725faed0bd483c3812711cc7ae905168ec40e0d7b32a181d11bdc9a6e883244f"
+    },
+    {
+      "path": "internal/domain/server/repository.go",
+      "sha256": "869ee963f57b6eee56d2ffbccf90a6cbb74356e361420334f8a98fbeffc9c987"
+    },
+    {
+      "path": "internal/infrastructure/persistence/proxy_repository.go",
+      "sha256": "d4fb3689c3e7c18719ba52770acba356187dd3495beaaf56f1a4a40e339a0633"
+    },
+    {
+      "path": "internal/infrastructure/persistence/server_repository.go",
+      "sha256": "53046329f1b1e81df70c79f07df29c348c462c604d8ef13cfa383a28ed874140"
+    },
+    {
+      "path": "migrations/1774402980_collections_snapshot.go",
+      "sha256": "edb639808ebcbc657de8f76c58e15abb60a1e104d3736a5e23b49dcc0d2cff12"
+    },
+    {
+      "path": "main.go",
+      "sha256": "09d5bb62389d058ce30cc7f2a835cc1faccc80ee4184166bda8789dc99fd828d"
+    }
+  ],
+  "changed_business_files": []
+}

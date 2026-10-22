@@ -1,0 +1,9 @@
+{
+  "html_url": "https://github.com/fatedier/frp/pull/5560",
+  "merge_commit_sha": "55107d003da383c9049cdc3195fef9f9f14df950",
+  "merged": true,
+  "merged_at": "2026-10-09T04:27:13Z",
+  "number": 5560,
+  "state": "closed",
+  "title": "fix: synchronize service startup and shutdown"
+}

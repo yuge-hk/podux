@@ -1,0 +1,20 @@
+[
+  {
+    "file": "client/service.go",
+    "identical": false,
+    "v0.68.0_sha256": "4b1c99a795ecdbe3bee438d4a99501e0a434a319065fcb52fde0c00440df6be2",
+    "v0.71.1_sha256": "87389b05671136b4ccd714399d7dd3c98e153bcd627d558163c633136f4850e2"
+  },
+  {
+    "file": "pkg/util/xlog/xlog.go",
+    "identical": false,
+    "v0.68.0_sha256": "d52921105ccfdd0d3fd1defe29286bd78b1f72387c9fdc57ac64e3596eacf367",
+    "v0.71.1_sha256": "a6ee26503164e24021955caf84acbdafe09bcfd6814463449a8de5f2c01126d7"
+  },
+  {
+    "file": "client/proxy/udp.go",
+    "identical": false,
+    "v0.68.0_sha256": "2ad9c4ad8778ca7b92809e8d1c08e4780d1db918829dc2aac0fce250520e9c50",
+    "v0.71.1_sha256": "b94a56db5a27742c85cfbb09e1a0039e3e9a0976371b7c59137b7745102f550d"
+  }
+]
