@@ -1,0 +1,8 @@
+{
+  "upstream": "luckjiawei/podux",
+  "main_sha": "1136797a36a2f1186055278351f55e28b907d6d5",
+  "feature_test_sha": "c2e6e7d5328add30eec04177a6630cd3e7e42454",
+  "original_test_sha256": "58913c588eda9bcba15caea22f839477d5727de4e34ede265d8d97049579462f",
+  "test_command": "CGO_ENABLED=1 go test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC'",
+  "difference": "Cloudflare imports, fixture compilation, manager lifecycle and credential assertion removed. Two traffic probe pairs retained. All FRPC setup, timeout/backoff, TCP/UDP/reload/outage/reconnect/topology/shutdown/port assertions unchanged. No feature business code copied."
+}

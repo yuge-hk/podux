@@ -1,0 +1,130 @@
+name: FRPC mainline race baseline
+
+on:
+  push:
+    branches: [test/frpc-race-baseline-20261023]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frpc-baseline-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+          cache-dependency-path: site/pnpm-lock.yaml
+      - run: pnpm --dir site install --frozen-lockfile
+      - run: pnpm --dir site run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frpc-baseline-frontend
+          path: site/dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  native:
+    name: Native ${{ matrix.os }}-${{ matrix.arch }}
+    needs: frontend
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { runner: ubuntu-24.04, os: linux, arch: amd64 }
+          - { runner: ubuntu-24.04-arm, os: linux, arch: arm64 }
+          - { runner: windows-2025, os: windows, arch: amd64 }
+          - { runner: macos-15, os: darwin, arch: arm64 }
+    runs-on: ${{ matrix.runner }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          architecture: ${{ matrix.arch }}
+          cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: frpc-baseline-frontend
+          path: pb_public/
+      - name: Assert native host and record provenance
+        env:
+          EXPECTED_OS: ${{ matrix.os }}
+          EXPECTED_ARCH: ${{ matrix.arch }}
+        run: |
+          mkdir -p ci-results
+          python build/ci/native_environment.py > ci-results/environment.json
+      - name: Discover Windows CGO compiler
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          foreach ($candidate in @('C:\msys64\ucrt64\bin', 'C:\msys64\mingw64\bin', 'C:\mingw64\bin')) {
+            if (Test-Path "$candidate\gcc.exe") { Add-Content $env:GITHUB_PATH $candidate; break }
+          }
+      - name: Race availability (explicitly record unsupported environments)
+        id: race
+        run: |
+          if command -v gcc >/dev/null 2>&1 || command -v clang >/dev/null 2>&1; then
+            echo 'enabled=true' >> "$GITHUB_OUTPUT"
+            echo 'Race: scheduled; CGO compiler found.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'enabled=false' >> "$GITHUB_OUTPUT"
+            echo 'Race: Skipped — no supported CGO compiler found on this runner.' | tee ci-results/race-skipped.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Vet and native build
+        id: build
+        run: |
+          go vet ./...
+          go build ./...
+      - name: Build isolated FRPS at the unchanged embedded version
+        id: frps
+        run: python build/ci/build_frps.py --output "$RUNNER_TEMP/frps-test" > ci-results/frps-binary.json
+      - name: Native FRPC functional baseline
+        id: frpc
+        run: |
+          export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+          go test -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc.json
+      - name: Native FRPC baseline with race detector
+        id: frpc_race
+        if: ${{ !cancelled() && steps.frps.outcome == 'success' && steps.race.outputs.enabled == 'true' }}
+        env:
+          CGO_ENABLED: '1'
+        run: |
+          export PODUX_TEST_FRPS="$(python -c 'import json; print(json.load(open("ci-results/frps-binary.json"))["binary"])')"
+          go test -race -json -count=1 -timeout 3m ./internal/integration -run '^TestFRPC' > ci-results/frpc-race.json
+      - name: Record actual outcomes
+        if: always()
+        env:
+          BUILD: ${{ steps.build.outcome }}
+          FRPC: ${{ steps.frpc.outcome }}
+          FRPC_RACE: ${{ steps.frpc_race.outcome }}
+        run: python build/ci/summarize.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frpc-mainline-native-${{ matrix.os }}-${{ matrix.arch }}
+          path: ci-results/
+          if-no-files-found: error
+          retention-days: 14
