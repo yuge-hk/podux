@@ -80,3 +80,55 @@ Current safe evidence is collected outside the source tree at `/root/公共/podu
 Real Edge/public-origin tests remain Blocked until dedicated nonproduction credentials and an authorized test origin are available. Known FRP race/dependency audit findings remain outside the requested change. Normal native lifecycle coverage does not establish universal orphan-process handling on forced macOS/Windows parent crashes. Windows custom key overrides must currently remain on the same volume as the data directory; cross-volume paths fail closed. No 1–2 hour soak was performed. These limits must remain visible in the PR; this report does not claim completed production/live acceptance.
 
 The default review proposal is one coherent backend/migration/UI/docs feature, with a separate FRP dependency change if maintainers authorize it. A backend-first/UI-second PR split is possible without discarding the Fork implementation, but no upstream PR or automatic merge is performed in this round.
+
+
+## Phase 5 pre-submission verification — 2026-10-23
+
+**Draft PR material is prepared; live acceptance remains Blocked. No upstream PR was created.** This section supersedes no historical result and does not turn the Phase 4 fixture tests into Edge evidence.
+
+### Repository and scope
+
+Phase 5 started from clean feature SHA `c4b4f6fbe84ae0122161ba4cd22db4df7836152a`. A fresh `git fetch origin main` confirmed upstream `1136797a36a2f1186055278351f55e28b907d6d5`, with zero upstream commits missing from the feature and no merge/rebase needed. The executable source is unchanged from native-tested SHA `583bbc19d1779431b1a0dec4ab47364a3d64a5a1`. Phase 5 changes only review documentation; the complete proposed manifest remains 90 files: 37 backend/migration, 23 frontend/QA, 10 CI/helper and 20 documentation/review files. Each manifest path was checked against the actual diff and its scope recorded locally. Historical race investigation artifacts stay in their immutable archive branches. No FRPC/model, FRP module, Docker, release or existing publishing-workflow changes were introduced.
+
+### Real Edge acceptance
+
+The current host's listening sockets did not expose a running Podux test instance. The user was asked for the local test URL and the two dedicated profile names, plus an optional authorized test domain; these details were not supplied during this verification. No Token, credential file, database, browser session store or process environment was read to discover credentials. No unknown service was stopped or restarted. A remote/manual test environment may exist, but its absence cannot be inferred from this host's sockets alone.
+
+| Requested live scenario | Result | Missing evidence / condition |
+| --- | --- | --- |
+| Successful Edge connection | Blocked | Identified authenticated test instance with a manually saved dedicated nonproduction Token |
+| Podux vs Cloudflare Dashboard | Blocked | Live status plus user-observed Dashboard comparison; no Cloudflare account/API integration is added |
+| Start / Stop / Restart | Blocked | Identified dedicated live profile; prior synthetic lifecycle coverage remains separate |
+| Two simultaneous independent Tunnels | Blocked | Two identified dedicated profiles and their independent Edge sessions |
+| Whole-Podux restart and autoStart recovery | Blocked | Identified isolated test service and live profiles; no unknown service was restarted |
+| Safe live Token replacement / profile deletion | Blocked | User performs Token entry/replacement manually; replacement/deletion needs designated disposable profiles |
+| Live logs / Metrics / database / error confidentiality | Blocked | Live data not available; synthetic/API/encryption/logging regressions Passed separately |
+| Public HTTP / test-origin response | Blocked | Authorized dedicated hostname and expected origin response were not supplied |
+
+For a later live run, collect only whitelisted status fields (phase/ready/connections/protocol/generation/revision/retry count), fixed safe event codes, Metrics counts and timestamps. Correlate them with a user-confirmed Dashboard state. Do not capture token fields, raw request bodies, browser network archives, raw child output, database dumps, temporary token-file contents or encryption keys. Existing write-only UI must handle manual replacement; automation must not retrieve or replay the plaintext Token. A dedicated hostname can be tested only after the user identifies it and its expected non-sensitive response. Real Token confidentiality cannot be proved by the synthetic tests alone.
+
+### Fresh local checks
+
+All checks below actually ran on Linux amd64 at Phase 5 base SHA `c4b4f6f`; no executable code changed afterwards. Raw synthetic-only output and the per-file scope/hash inventory remain outside Git at `/root/公共/podux-phase5-validation`.
+
+| Check | Result | Actual scope |
+| --- | --- | --- |
+| Frontend frozen install / TypeScript / Vite build | Passed | Repository lockfile retained |
+| Vitest | Passed | 68 tests |
+| Tunnel-targeted ESLint | Passed | Tunnel pages, test setup, App/layout and Vitest configuration |
+| Full frontend lint | Failed | Existing 26 errors / 3 warnings; no unrelated cleanup |
+| Go vet / build | Passed | Newly built frontend prepared in ignored pb_public |
+| Offline Go tests | Passed | 28 Passed; official binary and FRPS opt-ins explicitly Skipped |
+| Offline Go race tests | Passed | 28 Passed; same two explicit opt-in skips |
+| Official cloudflared binary | Passed | 2026.10.3, TestOfficialBinary separately enabled; synthetic invalid-token local path only |
+| Documentation frozen install / build | Passed | Chinese/English VitePress site |
+| New native workflow run | Skipped | No executable/workflow change; verified existing native run and immutable evidence instead |
+| Dependency audit refresh | Skipped | Phase 4's 54 Go advisory IDs and 67 frontend findings remain disclosed, not resolved or reclassified |
+
+[Actions run 39964271753](https://github.com/yuge-hk/podux/actions/runs/39964271753) was rechecked using GitHub CLI. Its overall result remains **Failed**. All four platforms' Cloudflare unit/race/official-binary tests and FRPC functional steps Passed. FRPC race Failed on Linux amd64, Linux arm64 and Windows amd64; macOS arm64 did not reproduce it that run. This is native evidence for executable SHA `583bbc1`, not a newly executed Phase 5 matrix. The pinned dependency remains v0.68.0. GitHub metadata reconfirmed upstream fixes [#5585](https://github.com/fatedier/frp/pull/5585) and [#5586](https://github.com/fatedier/frp/pull/5586) are merged; they have not been incorporated here.
+
+### Review readiness and limitations
+
+The English guide, labelled fixture screenshots, installation/key backup requirements, capability/TLS boundaries and native process-cleanup limits remain accurate; no screenshot is presented as a successful live Edge connection. The file manifest matches all 90 paths. Runtime data/build outputs remain ignored. The full proposed file set passed private-key/GitHub-credential pattern and prohibited runtime-file checks, and the diff passed whitespace checks. These checks do not constitute proof that all possible secret formats are detectable. No real credential was available or introduced during this phase.
+
+The [English draft](cloudflared-pr-draft.md) is prepared for a future **Draft** PR, with live acceptance Blocked, known dependency/lint findings and the red FRPC race check visible. No claim of production readiness is made. Creating any upstream PR still requires explicit user authorization. No production environment or Cloudflare account configuration was modified.

@@ -2,6 +2,10 @@
 
 feat: manage local Cloudflare Tunnel connectors
 
+# Submission state
+
+Prepared for a **Draft** PR. No upstream PR has been created; submission requires explicit user authorization. Live Edge acceptance remains Blocked.
+
 # PR description
 
 Podux currently manages FRPC clients but has no lifecycle controls for existing Cloudflare Tunnel connectors. This adds an authenticated Tunnel page and independent backend runner so users can save multiple token-based profiles, run them concurrently, and start/stop/restart each one separately.
@@ -29,6 +33,8 @@ Install cloudflared >=2025.4.0 separately; startup also verifies token-file/flag
 The [Phase 4 report](cloudflared-phase4-validation.md) records exact commits, native Actions links, build/test counts, screenshots, security review and outstanding items. Locally, frontend build/type checking, 68 frontend tests, targeted lint, backend build/vet, 28 offline Go tests and their race run passed. Official cloudflared 2026.10.3 local invalid-token checks passed. Browser scenarios cover 18 general plus 9 real test-connector lifecycle checks; seven additional actual Podux restart/recovery checks passed in a disposable Linux environment.
 
 Fresh [native run 39964271753](https://github.com/yuge-hk/podux/actions/runs/39964271753), executable-code SHA `583bbc19d1779431b1a0dec4ab47364a3d64a5a1`, passed Linux amd64/arm64, Windows amd64 and macOS arm64 Cloudflare unit/race/official-binary checks and functional FRPC regression. Overall CI Failed: the unchanged FRP v0.68.0 race reproduced on both Linux platforms and Windows; macOS did not reproduce it this run. The independent mainline control and full historical evidence are retained via immutable archive links rather than thousands of generated lines in this feature diff. Existing full-frontend lint/dependency audit findings are disclosed in the report, not claimed resolved.
+
+Phase 5 repeated the frontend frozen install/build, 68 tests, targeted lint, Go vet/build, 28 offline unit tests and their race run, official-binary local-failure test, and documentation build successfully. It fetched upstream main (still `1136797`) and confirmed the 90-file scope and unchanged FRPC/FRP. No live test instance/profile names or dedicated test hostname were supplied, so real Edge and Dashboard/replacement/deletion checks remain Blocked. No plaintext Token was read, copied or uploaded. The existing native result above was rechecked rather than represented as a new run. See the Phase 5 section of the report for precise skips and limitations.
 
 ## Outstanding acceptance / review notes
 
