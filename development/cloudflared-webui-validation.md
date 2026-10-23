@@ -1,8 +1,11 @@
 # Cloudflare Tunnel WebUI — Phase 2 implementation and evidence
 
+> Historical evidence. Current acceptance: [Phase 4](cloudflared-phase4-validation.md).
+> Raw artifacts and the original report are preserved in the [immutable archive](https://github.com/yuge-hk/podux/tree/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development); generated evidence is excluded from the feature diff.
+
 Branch: `feat/local-cloudflare-tunnels`. Phase 1 and Phase 2 changes remain
 uncommitted. No push, PR, production deployment or production Cloudflare Token.
-The [Phase 2 file manifest](cloudflared-webui-files.txt) distinguishes this work
+The [Phase 2 file manifest](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/cloudflared-webui-files.txt) distinguishes this work
 from the pre-existing Phase 1 backend changes in the same worktree.
 
 ## Delivered UI
@@ -100,7 +103,7 @@ background visibility, non-overlap, secret display/storage and bilingual key par
 
 ## Native Chromium checks and screenshots
 
-[General browser report](screenshots/browser-checks.json): **18 checks passed**
+[General browser report](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/browser-checks.json): **18 checks passed**
 against the real disposable Podux database/API and official cloudflared 2025.4.0
 using only a synthetic invalid Token. Tested actual login/route guard, empty
 state, create/edit/reload persistence, mobile form/start/restart/logs, confirmed
@@ -108,7 +111,7 @@ delete, navigation and storage/console/URL safety. Its Stop UI state and missing
 binary scenarios use explicitly declared fixtures. Invalid-token failure is not
 a successful Cloudflare connection.
 
-[Fixture lifecycle report](screenshots/lifecycle-browser-checks.json): **9 checks
+[Fixture lifecycle report](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/lifecycle-browser-checks.json): **9 checks
 passed** through real browser -> real Podux -> actual child processes. A
 [test-only Go connector](../site/qa/testdata/cloudflared/main.go) supplies local
 readiness/Metrics without any Cloudflare networking. Verified concurrent children,
@@ -123,14 +126,14 @@ observed at either mobile width. Existing mobile bottom padding increases to
 actual Chinese dark-mode and English light-mode screenshots were inspected.
 These are Chromium viewport checks, not physical iOS/Android device tests.
 
-- [Desktop light, official binary / saved profiles](screenshots/cloudflare-desktop-light.png)
-- [Mobile advanced form](screenshots/cloudflare-mobile-form.png)
-- [Mobile dark Chinese](screenshots/cloudflare-mobile-dark-zh.png)
-- [320px layout](screenshots/cloudflare-mobile-320.png)
-- [Mobile actual fixture processes running](screenshots/cloudflare-fixture-mobile-running.png)
-- [Mobile actual safe fixture events](screenshots/cloudflare-fixture-mobile-events.png)
-- [Desktop dark Chinese, fixture processes](screenshots/cloudflare-fixture-desktop-dark-zh.png)
-- [Existing FRPC dashboard](screenshots/frpc-dashboard-regression.png)
+- [Desktop light, official binary / saved profiles](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-desktop-light.png)
+- [Mobile advanced form](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-mobile-form.png)
+- [Mobile dark Chinese](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-mobile-dark-zh.png)
+- [320px layout](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-mobile-320.png)
+- [Mobile actual fixture processes running](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-fixture-mobile-running.png)
+- [Mobile actual safe fixture events](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-fixture-mobile-events.png)
+- [Desktop dark Chinese, fixture processes](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/cloudflare-fixture-desktop-dark-zh.png)
+- [Existing FRPC dashboard](https://github.com/yuge-hk/podux/blob/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development/screenshots/frpc-dashboard-regression.png)
 
 Fixture screenshots explicitly represent test connector readiness, not Cloudflare
 Edge connectivity. Synthetic profile names/descriptions remain user data, not UI

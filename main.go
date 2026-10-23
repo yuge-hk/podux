@@ -119,6 +119,7 @@ func main() {
 				}
 			}
 		}()
+		persistence.ProtectTunnelQueryLogs(app)
 		// The filesystem lock is independent of DB locking and held until all
 		// managed children have exited.
 		release, err := cloudflared.LockDataDir(app.DataDir())

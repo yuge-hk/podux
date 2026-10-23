@@ -19,7 +19,9 @@ By default the AES-256-GCM key is stored at
 `<absolute-PocketBase-data-directory>.cloudflared-secrets/master.key`, a sibling
 of the data directory, outside SQLite and PocketBase's data directory. Override
 with `PODUX_CLOUDFLARED_KEY_FILE`; paths within the data directory are rejected,
-including paths resolved through symlinks. Protect that location and mount it
+including paths resolved through symlinks. On Windows, the current path validation
+requires a custom key location on the same volume as the data directory;
+cross-volume paths fail closed. Protect that location and mount it
 persistently in containers. Podux runs as the existing OS user. Unix key files
 must have no group/other permissions; newly created files use 0600. Windows
 creates a protected DACL for the current user, SYSTEM and Administrators.
@@ -39,7 +41,9 @@ Each run gets a private temporary token file passed with `--token-file`; the
 Token never travels in argv or inherited environment variables. The explicit
 empty configuration file prevents implicit local cloudflared config discovery.
 Runtime files are removed after Wait completes and on the next locked startup.
-Runtime paths and key paths are never returned by the API. Local OS administrators
+Runtime paths and key paths are never returned by the API. The new collection's SQL debug/performance callbacks are suppressed before serving requests so even
+encrypted Token values cannot appear in interpolated development-mode SQL logs;
+logging for other collections remains unchanged. Local OS administrators
 and the application account remain trusted. Protect disks, backups and host access.
 
 ## REST API

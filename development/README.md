@@ -18,3 +18,10 @@ These documents are based on repository code and configuration, not speculation 
 - Update the database document when migrations, collection rules/indexes/relations, field mappings, or retention/deletion policies change.
 - Update the UI document when theme configuration, design tokens, layout breakpoints, shared components, interaction states, internationalization, or accessibility constraints change.
 - Update the repository-root `AGENT.md` when any of the changes above also affect agent working conventions.
+
+## Local Cloudflare Tunnel review
+
+- [API, credentials and platform contract](../docs/api/cloudflared.md).
+- [Phase 4 acceptance and known limits](cloudflared-phase4-validation.md).
+- [English PR draft](cloudflared-pr-draft.md).
+- [Complete Phase 1–3 evidence archive](https://github.com/yuge-hk/podux/tree/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development).

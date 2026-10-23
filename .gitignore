@@ -67,3 +67,7 @@ __debug*
 
 # Native verification helper bytecode
 build/ci/__pycache__/
+
+# Disposable QA outputs; selected documentation screenshots are versioned under docs/public.
+/development/screenshots/
+/development/phase3-evidence/

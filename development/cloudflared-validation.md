@@ -1,5 +1,8 @@
 # Cloudflared backend validation
 
+> Historical evidence. Current acceptance: [Phase 4](cloudflared-phase4-validation.md).
+> Raw artifacts and the original report are preserved in the [immutable archive](https://github.com/yuge-hk/podux/tree/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development); generated evidence is excluded from the feature diff.
+
 Baseline: Podux `1136797a36a2f1186055278351f55e28b907d6d5`.
 Reference-only cfui: `506bc8f7280ca70d6f1fd50402c197079e7dac3c`.
 No cfui code copied. No production account/Token, PR or deployment was used.

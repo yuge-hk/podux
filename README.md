@@ -51,6 +51,18 @@
 
 </div>
 
+## Local Cloudflare Tunnel connectors
+
+Manage multiple local cloudflared connectors for existing Tunnel tokens from the
+same authenticated WebUI: independent start/stop/restart, encrypted Token updates,
+auto-start/retry policies, loopback Metrics and safe runtime events.
+
+Install cloudflared separately (>= 2025.4.0; capability checks apply) and persist
+its external encryption key alongside your data backup. The standard Docker image
+does not bundle cloudflared. Account/API, DNS, ingress and Access management are
+outside this feature. See the [English user guide](docs/en/guide/cloudflare-tunnels.md)
+and [deployment/security contract](docs/api/cloudflared.md).
+
 ## Screenshot
 
 ![Screenshot](screenshot/1.png)

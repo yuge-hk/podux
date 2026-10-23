@@ -1,8 +1,0 @@
-{"Time":"2026-10-22T20:00:11.973559Z","Action":"start","Package":"podux/internal/infrastructure/cloudflared"}
-{"Time":"2026-10-22T20:00:11.994004Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary"}
-{"Time":"2026-10-22T20:00:11.994233Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Output":"=== RUN   TestOfficialBinary\n"}
-{"Time":"2026-10-22T20:00:13.055021Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Output":"--- PASS: TestOfficialBinary (1.06s)\n"}
-{"Time":"2026-10-22T20:00:13.0552Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Elapsed":1.06}
-{"Time":"2026-10-22T20:00:13.055231Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Output":"PASS\n"}
-{"Time":"2026-10-22T20:00:13.055463Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Output":"ok  \tpodux/internal/infrastructure/cloudflared\t1.081s\n"}
-{"Time":"2026-10-22T20:00:13.055552Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Elapsed":1.081}

@@ -51,6 +51,16 @@
 
 </div>
 
+## Cloudflare Tunnel 本地连接器
+
+在现有登录后的 WebUI 中管理多个已有 Tunnel Token 对应的本机连接器，支持独立
+启动、停止、重启、加密 Token 更新、自动启动/重试、回环 Metrics 和安全运行事件。
+
+需单独安装 cloudflared（>= 2025.4.0，并通过能力检测），并将外置加密主密钥与数据
+配套备份。标准 Docker 镜像不内置 cloudflared。该功能不管理 Cloudflare 账号/API、
+DNS、Ingress 或 Access。参见[中文使用指南](docs/guide/cloudflare-tunnels.md)与
+[部署及安全说明](docs/api/cloudflared.md)。
+
 ## 界面截图
 
 ![界面截图](screenshot/1.png)

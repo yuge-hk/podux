@@ -29,6 +29,7 @@ export default defineConfig({
                         { text: '界面预览', link: '/guide/screenshots' },
 
               { text: '快速开始', link: '/guide/getting-started' },
+              { text: 'Cloudflare Tunnel', link: '/guide/cloudflare-tunnels' },
             ]
           },
           {
@@ -87,7 +88,8 @@ export default defineConfig({
             items: [
               { text: 'What is Podux?', link: '/en/guide/what-is-podux' },
               { text: 'Screenshots', link: '/en/guide/screenshots' },
-              { text: 'Getting Started', link: '/en/guide/getting-started' }
+              { text: 'Getting Started', link: '/en/guide/getting-started' },
+              { text: 'Cloudflare Tunnel', link: '/en/guide/cloudflare-tunnels' }
             ]
           },
           {

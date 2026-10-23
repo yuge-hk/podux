@@ -9,7 +9,13 @@ assert.equal(
   "1",
   "Use only a disposable backend and set PODUX_QA_DISPOSABLE=1"
 );
-const backend = "http://127.0.0.1:8090";
+const backend = process.env.PODUX_QA_BACKEND_URL || "http://127.0.0.1:8090";
+const ui = process.env.PODUX_QA_UI_URL || "http://127.0.0.1:5173";
+for (const address of [backend, ui]) {
+  const url = new URL(address);
+  assert(url.protocol === "http:" && url.hostname === "127.0.0.1");
+  assert(!url.username && !url.password && !url.search && !url.hash && url.pathname === "/");
+}
 const email = "ui-test@example.invalid",
   password = "temporary-ui-test-password";
 const init = await fetch(backend + "/api/system/initialized").then((r) => r.json());
@@ -64,14 +70,14 @@ page.on("request", (request) => {
   }
 });
 try {
-  await page.goto("http://127.0.0.1:5173/tunnels");
+  await page.goto(ui + "/tunnels");
   await page.waitForURL("**/login");
   checks.push("Unauthenticated /tunnels redirects to existing login");
   await page.locator('input[type="email"]').fill(email);
   await page.locator('input[type="password"]').fill(password);
   await page.locator('button[type="submit"]').click();
   await page.waitForURL((url) => !url.pathname.endsWith("/login"));
-  await page.goto("http://127.0.0.1:5173/tunnels");
+  await page.goto(ui + "/tunnels");
   await page.getByText("No Tunnel profiles yet", { exact: true }).waitFor();
   checks.push("Existing login and empty Tunnel page");
   const create = async (name) => {
@@ -168,14 +174,14 @@ try {
   await page.setViewportSize({ width: 1366, height: 950 });
   await page.reload();
   for (const path of ["/servers", "/proxies", "/dashboard"]) {
-    await page.goto("http://127.0.0.1:5173" + path);
+    await page.goto(ui + path);
     await page.waitForTimeout(1000);
     assert(!page.url().includes("/login"));
     assert((await page.locator("main").count()) === 0 || (await page.locator("body").innerText()));
   }
   await page.screenshot({ path: proof + "/frpc-dashboard-regression.png", fullPage: true });
   checks.push("Existing server/proxy/dashboard pages render with authenticated real APIs");
-  await page.goto("http://127.0.0.1:5173/tunnels");
+  await page.goto(ui + "/tunnels");
   await page.getByRole("article", { name: "Mobile connector", exact: true }).waitFor();
   await page
     .getByRole("article", { name: "Mobile connector", exact: true })

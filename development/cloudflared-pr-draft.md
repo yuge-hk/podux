@@ -1,11 +1,41 @@
-# Draft: Manage local Cloudflare Tunnel processes in Podux
+# PR title
 
-Adds authenticated management of multiple token-based cloudflared configurations through the existing PocketBase backend and React application. Each tunnel has independent lifecycle, retry policy, bounded redacted events and runtime status. Users can start, stop and restart one tunnel while others continue running.
+feat: manage local Cloudflare Tunnel connectors
 
-The implementation follows existing domain/application/infrastructure/interfaces layers, adds an incremental collection migration, encrypts Tokens with AES-GCM using an external paired key file, and passes Tokens through protected temporary token files. Normal API responses exclude plaintext/ciphertext and internal credential paths. Updates use revisions. Unsupported local TLS overrides are not exposed. Existing FRPC models and runner are unchanged. This does not add Cloudflare account/API, DNS, ingress, Access or remote tunnel provisioning.
+# PR description
 
-Backups must retain both the database and its external encryption key; missing keys with existing encrypted records fail closed instead of silently replacing the key. Platform-specific child cleanup guarantees are limited to verified behavior. Rollback removes the new collection and should only follow a complete paired backup and shutdown of managed processes.
+Podux currently manages FRPC clients but has no lifecycle controls for existing Cloudflare Tunnel connectors. This adds an authenticated Tunnel page and independent backend runner so users can save multiple token-based profiles, run them concurrently, and start/stop/restart each one separately.
 
-Validation: local Go build/vet/offline tests and offline race suite, official cloudflared local rejection test, migration/restore and API tests passed. Frontend has 68 passing tests and 27 browser checks. Local FRPS TCP/UDP/reconnect/coexistence tests passed without race. Full lint retains pre-existing failures.
+## Behavior and scope
 
-**Not merge-ready:** the opt-in real FRPC race regression fails in unchanged FRP 0.68.0; baseline dependency advisories remain. Native four-platform GitHub Actions actually ran: all Cloudflare module suites and official binary checks passed; three jobs failed on existing FRP race reports. A completed follow-up passed FRPC functional checks on all four platforms but detected FRP races on all four, so the overall run remains Failed. Authorized Edge and long soak tests remain unverified. See [validation report](cloudflared-phase3-validation.md) for evidence and current status. This is a description draft only; no PR has been created.
+- Reuses the existing React layout, authentication, Radix components, bilingual resources and application/domain/infrastructure/interfaces structure.
+- Adds a reversible PocketBase collection migration; the collection API stays locked and custom endpoints require the existing authentication. Profiles follow the existing shared authenticated-user management model.
+- Supports version/capability-checked cloudflared parameters, loopback Metrics, observed readiness/protocol, bounded safe events, auto-start, bounded retries/backoff and revision-checked updates. Saving configuration does not silently restart a running profile.
+- A fresh Podux start restores only autoStart profiles; manually started non-autoStart profiles remain stopped. Manual Stop leaves autoStart unchanged for the next application restart. Stored PIDs are never adopted.
+- Does not add Cloudflare account/API, DNS, cloud-side Tunnel lifecycle, Public Hostname/Ingress, Access or topology management. FRPC source/models and the FRP dependency remain unchanged.
+
+## Credentials and lifecycle
+
+Tokens are write-only, AES-256-GCM encrypted with record-bound associated data and an external paired master key. Responses exclude plaintext/ciphertext/key paths. The UI never reveals an existing Token or stores a newly entered one in browser storage/URLs. A protected temporary --token-file is passed through an exec argument array; no shell is used. Child output is reduced to fixed allowlisted events, and the new collection's SQL logging is suppressed even in development mode so encrypted credential values do not enter debug logs.
+
+Each profile owns its process, operation lock, generation, retry budget, Metrics reservation and bounded events. Each child has one Wait owner. Normal shutdown stops children before releasing the data-directory lock. macOS/Windows parent-crash/descendant guarantees are explicitly limited; Windows uses best-effort graceful signaling with forced direct-child termination on timeout.
+
+## Deployment and recovery
+
+Install cloudflared >=2025.4.0 separately; startup also verifies token-file/flag capabilities. The standard Docker image does not bundle it. Persist both the data directory and its external master key; a database-only backup cannot restore encrypted Tokens. Missing/wrong keys fail closed and are not silently replaced. Stop managed processes and retain a complete paired backup before rolling back the new collection. Master-key rotation is not implemented.
+
+## Validation
+
+The [Phase 4 report](cloudflared-phase4-validation.md) records exact commits, native Actions links, build/test counts, screenshots, security review and outstanding items. Locally, frontend build/type checking, 68 frontend tests, targeted lint, backend build/vet, 28 offline Go tests and their race run passed. Official cloudflared 2026.10.3 local invalid-token checks passed. Browser scenarios cover 18 general plus 9 real test-connector lifecycle checks; seven additional actual Podux restart/recovery checks passed in a disposable Linux environment.
+
+Historical native Linux amd64/arm64, Windows amd64 and macOS arm64 runs passed the Cloudflare module/official-binary checks and functional FRPC regression. Full CI remains subject to the unchanged FRP v0.68.0 race failures. The independent mainline control and full historical evidence are retained via immutable archive links rather than thousands of generated lines in this feature diff. Existing full-frontend lint/dependency audit findings are disclosed in the report, not claimed resolved.
+
+## Outstanding acceptance / review notes
+
+- Real Cloudflare Edge connections and public-origin reachability are **Blocked** without authorized nonproduction credentials. Fixture readiness and invalid-token tests are not substitutes for live acceptance. No production Token was used.
+- FRP upstream merged [UDPProxy fix #5585](https://github.com/fatedier/frp/pull/5585) and [xlog fix #5586](https://github.com/fatedier/frp/pull/5586). Podux still pins v0.68.0, so those fixes are not present here and prior failed checks are not reclassified as Passed. An FRP upgrade belongs in a separate change.
+- This is a review draft, not a claim of complete live acceptance or merge readiness. No upstream PR has been created.
+
+## Suggested review split
+
+The feature can remain one coherent backend/migration/UI/docs change, with FRP dependency remediation kept separate. If maintainers prefer smaller reviews, split the backend/migration/tests first and UI/docs second while retaining the complete implementation in the Fork. Historical race investigations and generated evidence already live in a separate archive and need not be merged as product source.

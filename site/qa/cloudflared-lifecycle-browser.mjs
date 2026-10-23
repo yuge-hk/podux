@@ -6,7 +6,14 @@ import { mkdir, writeFile } from "node:fs/promises";
 assert.equal(process.env.PODUX_QA_DISPOSABLE, "1");
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE);
 const proof = process.env.PROOF_DIR || "development/screenshots";
-const api = "http://127.0.0.1:8090/api";
+const backend = process.env.PODUX_QA_BACKEND_URL || "http://127.0.0.1:8090";
+const ui = process.env.PODUX_QA_UI_URL || "http://127.0.0.1:5173";
+for (const address of [backend, ui]) {
+  const url = new URL(address);
+  assert(url.protocol === "http:" && url.hostname === "127.0.0.1");
+  assert(!url.username && !url.password && !url.search && !url.hash && url.pathname === "/");
+}
+const api = backend + "/api";
 const auth = await fetch(api + "/collections/fh_users/auth-with-password", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -57,12 +64,12 @@ const browser = await chromium.launch({
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 const checks = [];
 try {
-  await page.goto("http://127.0.0.1:5173/login");
+  await page.goto(ui + "/login");
   await page.locator('input[type="email"]').fill("ui-test@example.invalid");
   await page.locator('input[type="password"]').fill("temporary-ui-test-password");
   await page.locator('button[type="submit"]').click();
   await page.waitForURL((url) => !url.pathname.endsWith("/login"));
-  await page.goto("http://127.0.0.1:5173/tunnels");
+  await page.goto(ui + "/tunnels");
   const card = (name) => page.getByRole("article", { name, exact: true });
   for (const name of ["Lifecycle A", "Lifecycle B"]) {
     await card(name).getByRole("button", { name: "Start", exact: true }).click();

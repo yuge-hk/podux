@@ -113,4 +113,6 @@ and visibility-aware. Application commands/configuration mutations are locked pe
 profile so long Stop operations do not block unrelated profiles.
 
 See [API, security, lifecycle and platform limits](../docs/api/cloudflared.md) and
-[backend verification](cloudflared-validation.md) and [native Actions results](cloudflared-phase3-validation.md). The independent [native workflow](../.github/workflows/cloudflared-ci.yml) builds the frontend and executes Linux amd64/arm64, Windows amd64 and macOS arm64 tests, pinned official-binary checks and isolated local FRPS regression. Its permissions are read-only. Native results and existing FRP race failures are recorded separately in the validation report.
+[backend verification](cloudflared-validation.md) and [native Actions results](cloudflared-phase3-validation.md). The new collection suppresses SQL query/exec/debug/performance callbacks before serving requests, preventing encrypted Tokens from appearing in development SQL logs while keeping other collection logging unchanged.
+
+The independent [native workflow](../.github/workflows/cloudflared-ci.yml) builds the frontend and executes Linux amd64/arm64, Windows amd64 and macOS arm64 tests, pinned official-binary checks and isolated local FRPS regression. Its permissions are read-only. Native results and existing FRP race failures are recorded separately in the validation report.
