@@ -36,6 +36,8 @@ Fresh [native run 39964271753](https://github.com/yuge-hk/podux/actions/runs/399
 
 Phase 5 repeated the frontend frozen install/build, 68 tests, targeted lint, Go vet/build, 28 offline unit tests and their race run, official-binary local-failure test, and documentation build successfully. It fetched upstream main (still `1136797`) and confirmed the 90-file scope and unchanged FRPC/FRP. No live test instance/profile names or dedicated test hostname were supplied, so real Edge and Dashboard/replacement/deletion checks remain Blocked. No plaintext Token was read, copied or uploaded. The existing native result above was rechecked rather than represented as a new run. See the Phase 5 section of the report for precise skips and limitations.
 
+Phase 5B now provides an isolated loopback Podux instance with its own database/master key and two named stopped test profiles. Both contain explicitly synthetic placeholders pending manual replacement in the existing WebUI. Preparation verified UI serving, authentication enforcement and official-binary capabilities. Live Edge acceptance remains Blocked until the user saves the dedicated nonproduction Tokens; no connector success is inferred from stored credentials or preparation checks. No full regression suite was repeated for this documentation-only checkpoint.
+
 ## Outstanding acceptance / review notes
 
 - Real Cloudflare Edge connections and public-origin reachability are **Blocked** without authorized nonproduction credentials. Fixture readiness and invalid-token tests are not substitutes for live acceptance. No production Token was used.
