@@ -1,0 +1,171 @@
+=== RUN   TestFRPCTCPUDPReconnectBaseline
+    frpc_regression_test.go:223: Passed: real loopback TCP and UDP traffic through unchanged Podux FRPC service
+==================
+WARNING: DATA RACE
+Write at 0x00c0004eefd8 by goroutine 459:
+  github.com/fatedier/frp/client.(*Service).stop()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:501 +0x17c
+  github.com/fatedier/frp/client.(*Service).Run()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:271 +0x428
+  podux/internal/application/frpc.(*Service).LaunchFrpc.func1()
+      /Users/runner/work/podux/podux/internal/application/frpc/service.go:281 +0xf8
+
+Previous read at 0x00c0004eefd8 by goroutine 470:
+  github.com/fatedier/frp/client.(*Service).keepControllerWorking.func1()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:286 +0x50
+  github.com/fatedier/frp/pkg/util/wait.BackoffUntil()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/pkg/util/wait/backoff.go:133 +0x10c
+  github.com/fatedier/frp/client.(*Service).keepControllerWorking()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:282 +0x1b8
+  github.com/fatedier/frp/client.(*Service).Run.gowrap1()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:268 +0x34
+
+Goroutine 459 (running) created at:
+  podux/internal/application/frpc.(*Service).LaunchFrpc()
+      /Users/runner/work/podux/podux/internal/application/frpc/service.go:279 +0xc90
+  podux/internal/application/frpc.(*Service).LaunchFrpc()
+      /Users/runner/work/podux/podux/internal/application/frpc/service.go:275 +0xb38
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:213 +0x12e8
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:211 +0x1278
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:210 +0x1210
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:186 +0x1048
+  github.com/pocketbase/pocketbase/core.(*BaseApp).Save()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:179 +0x101c
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:187 +0x104c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidateWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:201 +0x50
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidate()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:193 +0x18
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:169 +0x3f0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidateWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:201 +0x50
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidate()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:193 +0x18
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:169 +0x3f0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidateWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:201 +0x50
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidate()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:193 +0x18
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:169 +0x3f0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidateWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:201 +0x50
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidate()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:193 +0x18
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:169 +0x3f0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidateWithContext()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:201 +0x50
+  github.com/pocketbase/pocketbase/core.(*BaseApp).SaveNoValidate()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db.go:193 +0x18
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:169 +0x3f0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:29 +0x1dc
+  github.com/pocketbase/pocketbase/core.(*BaseApp).RunInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:15 +0x618
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollections()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:141 +0x160
+  github.com/pocketbase/pocketbase/core.(*BaseApp).ImportCollectionsByMarshaledJSON()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_import.go:26 +0xdc
+  podux/migrations.init.0.func1()
+      /Users/runner/work/podux/podux/migrations/1774402980_collections_snapshot.go:1696 +0x68
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up.func1.1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:153 +0x194
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:34 +0x2e8
+  github.com/pocketbase/dbx.(*DB).Transactional()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/dbx@v1.11.0/db.go:220 +0x9c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:32 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).RunInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:15 +0x48
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:130 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:34 +0x2e8
+  github.com/pocketbase/dbx.(*DB).Transactional()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/dbx@v1.11.0/db.go:220 +0x9c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:32 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).AuxRunInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:22 +0x48
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:129 +0x124
+  github.com/pocketbase/pocketbase/core.(*BaseApp).RunAllMigrations()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/base.go:800 +0x324
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:102 +0x290
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up.func1.1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:158 +0x1b8
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:34 +0x2e8
+  github.com/pocketbase/dbx.(*DB).Transactional()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/dbx@v1.11.0/db.go:220 +0x9c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:32 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).RunInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:15 +0x48
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:130 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:34 +0x2e8
+  github.com/pocketbase/dbx.(*DB).Transactional()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/dbx@v1.11.0/db.go:220 +0x9c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).runInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:32 +0xd4
+  github.com/pocketbase/pocketbase/core.(*BaseApp).AuxRunInTransaction()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/db_tx.go:22 +0x48
+  github.com/pocketbase/pocketbase/core.(*MigrationsRunner).Up()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/migrations_runner.go:129 +0x124
+  github.com/pocketbase/pocketbase/core.(*BaseApp).RunSystemMigrations()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/base.go:784 +0x1c0
+  github.com/pocketbase/pocketbase/core.(*BaseApp).Bootstrap.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/base.go:417 +0x1c4
+  github.com/pocketbase/pocketbase/tools/hook.(*Hook[go.shape.*uint8]).Trigger.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/hook.go:169 +0x94
+  github.com/pocketbase/pocketbase/tools/hook.(*Event).Next()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/event.go:32 +0x58
+  github.com/pocketbase/pocketbase/core.(*BaseApp).registerCollectionHooks.func15()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/collection_model.go:336 +0x24
+  github.com/pocketbase/pocketbase/tools/hook.(*Hook[go.shape.*uint8]).Trigger.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/hook.go:169 +0x94
+  github.com/pocketbase/pocketbase/tools/hook.(*Event).Next()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/event.go:32 +0x60
+  github.com/pocketbase/pocketbase/core.(*BaseApp).registerAutobackupHooks.func2()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/base_backup.go:371 +0x2c
+  github.com/pocketbase/pocketbase/tools/hook.(*Hook[go.shape.*uint8]).Trigger.func1()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/hook.go:169 +0x94
+  github.com/pocketbase/pocketbase/tools/hook.(*Event).Next()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/event.go:32 +0x60
+  github.com/pocketbase/pocketbase/core.(*BootstrapEvent).Next()
+      <autogenerated>:1 +0x24
+  github.com/pocketbase/pocketbase/tools/hook.(*Hook[go.shape.*uint8]).Trigger()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/tools/hook/hook.go:173 +0x48c
+  github.com/pocketbase/pocketbase/core.(*BaseApp).Bootstrap()
+      /Users/runner/go/pkg/mod/github.com/pocketbase/pocketbase@v0.35.0/core/base.go:394 +0x150
+  podux/internal/integration.TestFRPCTCPUDPReconnectBaseline()
+      /Users/runner/work/podux/podux/internal/integration/frpc_regression_test.go:98 +0x1e4
+  testing.tRunner()
+      /Users/runner/hostedtoolcache/go/1.25.5/arm64/src/testing/testing.go:1934 +0x164
+  testing.(*T).Run.gowrap1()
+      /Users/runner/hostedtoolcache/go/1.25.5/arm64/src/testing/testing.go:1997 +0x3c
+
+Goroutine 470 (running) created at:
+  github.com/fatedier/frp/client.(*Service).Run()
+      /Users/runner/go/pkg/mod/github.com/fatedier/frp@v0.68.0/client/service.go:268 +0x400
+  podux/internal/application/frpc.(*Service).LaunchFrpc.func1()
+      /Users/runner/work/podux/podux/internal/application/frpc/service.go:281 +0xf8
+==================
+    frpc_regression_test.go:276: Passed: single-proxy reload, FRPS outage/reconnect, original topology, FRPC shutdown and port cleanup
+    testing.go:1617: race detected during execution of test
+--- FAIL: TestFRPCTCPUDPReconnectBaseline (5.07s)
+FAIL
+FAIL	podux/internal/integration	5.119s

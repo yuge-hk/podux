@@ -1,0 +1,108 @@
+diff --git "a/root/\345\205\254\345\205\261/podux/internal/integration/frpc_regression_test.go" baseline/internal/integration/frpc_regression_test.go
+index f4caa5d..1158cd8 100644
+--- "a/root/\345\205\254\345\205\261/podux/internal/integration/frpc_regression_test.go"
++++ baseline/internal/integration/frpc_regression_test.go
+@@ -1,14 +1,12 @@
+ package integration
+ 
+ import (
+-	"context"
+ 	"fmt"
+ 	"io"
+ 	"net"
+ 	"os"
+ 	"os/exec"
+ 	"path/filepath"
+-	"runtime"
+ 	"strconv"
+ 	"testing"
+ 	"time"
+@@ -18,8 +16,6 @@ import (
+ 	"podux/internal/application/frpc"
+ 	proxyapp "podux/internal/application/proxy"
+ 	serverapp "podux/internal/application/server"
+-	d "podux/internal/domain/tunnel"
+-	"podux/internal/infrastructure/cloudflared"
+ 	"podux/internal/infrastructure/persistence"
+ 	_ "podux/migrations"
+ )
+@@ -85,7 +81,7 @@ func udpEcho(addr string) bool {
+ 
+ // The test uses Podux's unchanged FRPC service and pinned real FRPS on loopback.
+ // No production ports, public server, credentials, firewall or routing changes.
+-func TestFRPCTCPUDPReconnectAndCloudflaredCoexistence(t *testing.T) {
++func TestFRPCTCPUDPReconnectBaseline(t *testing.T) {
+ 	frpsPath := os.Getenv("PODUX_TEST_FRPS")
+ 	if frpsPath == "" {
+ 		t.Skip("set PODUX_TEST_FRPS to the isolated pinned FRPS binary; native CI does so explicitly")
+@@ -94,17 +90,7 @@ func TestFRPCTCPUDPReconnectAndCloudflaredCoexistence(t *testing.T) {
+ 	if e != nil {
+ 		t.Fatal(e)
+ 	}
+-	_, file, _, _ := runtime.Caller(0)
+-	repoRoot := filepath.Clean(filepath.Join(filepath.Dir(file), "../.."))
+ 	tmp := t.TempDir()
+-	fixture := filepath.Join(tmp, "connector-fixture")
+-	if runtime.GOOS == "windows" {
+-		fixture += ".exe"
+-	}
+-	build := exec.Command("go", "build", "-o", fixture, filepath.Join(repoRoot, "site/qa/testdata/cloudflared/main.go"))
+-	if out, e := build.CombinedOutput(); e != nil {
+-		t.Fatalf("fixture build: %v: %s", e, out)
+-	}
+ 	// The existing FRPC runner uses relative pb_data paths; isolate its working
+ 	// directory rather than changing production behavior for this test.
+ 	t.Chdir(tmp)
+@@ -235,21 +221,12 @@ func TestFRPCTCPUDPReconnectAndCloudflaredCoexistence(t *testing.T) {
+ 	eventually(t, "TCP proxy traffic failed", func() bool { return tcpEcho(tcpAddr) })
+ 	eventually(t, "UDP proxy traffic failed", func() bool { return udpEcho(udpAddr) })
+ 	t.Log("Passed: real loopback TCP and UDP traffic through unchanged Podux FRPC service")
+-	cf := cloudflared.NewManager(cloudflared.Probe(fixture), app.DataDir())
+-	defer cf.Shutdown(context.Background())
+-	tunnel := d.Record{ID: "ddddddddddddddd", Revision: 1, Config: d.Config{Name: "coexistence", Protocol: "quic", EdgeIPVersion: "auto", GracePeriodSeconds: 1}}
+-	if e = cf.Start(tunnel, "synthetic-fixture-only"); e != nil {
+-		t.Fatal(e)
+-	}
+-	eventually(t, "test connector not ready", func() bool { return cf.Status(tunnel.ID).Ready })
++	// Preserve the two traffic probes around the removed Cloudflare-only steps.
+ 	if !tcpEcho(tcpAddr) || !udpEcho(udpAddr) {
+-		t.Fatal("connector disturbed FRPC")
+-	}
+-	if e = cf.Stop(tunnel.ID); e != nil {
+-		t.Fatal(e)
++		t.Fatal("baseline FRPC traffic interrupted")
+ 	}
+ 	if !tcpEcho(tcpAddr) || !udpEcho(udpAddr) {
+-		t.Fatal("stopping connector disturbed FRPC")
++		t.Fatal("baseline FRPC traffic interrupted")
+ 	}
+ 	// Disable one proxy using the existing configuration reload path.
+ 	tcpProxy.Set("status", "disabled")
+@@ -278,16 +255,9 @@ func TestFRPCTCPUDPReconnectAndCloudflaredCoexistence(t *testing.T) {
+ 	if e != nil || len(data.Servers) != 1 || len(data.Proxies) != 2 {
+ 		t.Fatal("original topology regression", e)
+ 	}
+-	if e = cf.Start(tunnel, "synthetic-fixture-only"); e != nil {
+-		t.Fatal(e)
+-	}
+-	eventually(t, "coexistence restart", func() bool { return cf.Status(tunnel.ID).Ready })
+ 	if e = client.TerminateFrpc(&id); e != nil {
+ 		t.Fatal(e)
+ 	}
+-	if e = cf.Shutdown(context.Background()); e != nil {
+-		t.Fatal(e)
+-	}
+ 	eventually(t, "FRPC did not stop", func() bool { return !client.IsServerRunning(id) })
+ 	eventually(t, "TCP port not released", func() bool {
+ 		l, e := net.Listen("tcp4", tcpAddr)
+@@ -303,9 +273,5 @@ func TestFRPCTCPUDPReconnectAndCloudflaredCoexistence(t *testing.T) {
+ 		}
+ 		return e == nil
+ 	})
+-	entries, e := os.ReadDir(filepath.Join(app.DataDir(), "cloudflared"))
+-	if e != nil || len(entries) != 0 {
+-		t.Fatal("connector credentials left behind", e)
+-	}
+-	t.Log("Passed: single-proxy reload, FRPS outage/reconnect, original topology, joint service shutdown and port/credential cleanup")
++	t.Log("Passed: single-proxy reload, FRPS outage/reconnect, original topology, FRPC shutdown and port cleanup")
+ }
