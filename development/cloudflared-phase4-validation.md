@@ -46,14 +46,14 @@ An initial probe attempted to rebind a TCP port without SO_REUSEADDR and encount
 
 Historical run [39845439391](https://github.com/yuge-hk/podux/actions/runs/39845439391), tested SHA `c2e6e7d5328add30eec04177a6630cd3e7e42454`, actually passed all four platforms' Cloudflare suites, official binary checks and FRPC functional regression. All four separate FRPC race steps Failed. First run [39844432704](https://github.com/yuge-hk/podux/actions/runs/39844432704) is also retained.
 
-A fresh Phase 4 feature-branch push will validate the SQL-log hardening on the same native matrix. Results must be recorded from the real run, not inferred from historical success:
+Fresh Phase 4 [run 39964271753](https://github.com/yuge-hk/podux/actions/runs/39964271753) tested executable-code SHA `583bbc19d1779431b1a0dec4ab47364a3d64a5a1`. Frontend Passed. All native build/vet, unit, Cloudflare race, official-binary and functional FRPC steps Passed. The overall workflow is **Failed** because three FRPC race steps failed; macOS did not reproduce the FRPC race in this run. No step uses continue-on-error. The new SQL-log regression actually passed on all four native platforms.
 
 | Native runner / CPU | Phase 4 Cloudflare suite | Phase 4 official binary | Phase 4 FRPC functional | Phase 4 FRPC race |
 | --- | --- | --- | --- | --- |
-| ubuntu-24.04 / amd64 | Pending | Pending | Pending | Pending |
-| ubuntu-24.04-arm / arm64 | Pending | Pending | Pending | Pending |
-| windows-2025 / amd64 | Pending | Pending | Pending | Pending |
-| macos-15 / arm64 | Pending | Pending | Pending | Pending |
+| ubuntu-24.04 / amd64 | Passed (unit + race) | Passed | Passed | Failed |
+| ubuntu-24.04-arm / arm64 | Passed (unit + race) | Passed | Passed | Failed |
+| windows-2025 / amd64 | Passed (unit + race) | Passed | Passed | Failed |
+| macos-15 / arm64 | Passed (unit + race) | Passed | Passed | Passed (not reproduced) |
 
 ## FRP boundary and upstream fixes
 
@@ -73,7 +73,7 @@ The final staged diff is checked for private-key/GitHub-token patterns, runtime 
 
 Complete Phase 1–3 reports, original screenshots, raw race/audit/resource outputs and the inherited uncommitted control evidence were committed and pushed first to archive SHA `a7576af0b5d4610aca38f6708a28a8e4bfe00dcb` ([browse archive](https://github.com/yuge-hk/podux/tree/a7576af0b5d4610aca38f6708a28a8e4bfe00dcb/development)). Copies also remain in the local validation delivery directory. Only after confirming the archive push were generated raw evidence and duplicate screenshots removed from this feature tip. No functional test source or capability was removed. Generated QA output folders are ignored to avoid accidental reintroduction; two current, explicitly labelled screenshots are versioned in docs/public/screenshots.
 
-Current safe evidence is collected outside the source tree at `/root/公共/podux-phase4-validation`; credential-bearing disposable backend logs/data are not published. A later evidence-only archive will retain the curated current proof and exact CI metadata. The [final file manifest](cloudflared-phase4-files.txt) lists the complete proposed diff against upstream main, and the [English PR draft](cloudflared-pr-draft.md) describes scope, validation and outstanding acceptance.
+Current safe evidence is collected outside the source tree at `/root/公共/podux-phase4-validation`; credential-bearing disposable backend logs/data are not published. Curated current proof and exact CI metadata are retained at evidence-only archive SHA `c58489a2bd9a0ea80963652740382e2eadf4282a` ([browse Phase 4 evidence](https://github.com/yuge-hk/podux/tree/c58489a2bd9a0ea80963652740382e2eadf4282a/development/phase4-evidence)). This includes full four-platform race stacks and all outcomes; original Windows artifact CRLF is retained. The final feature-tip commit after executable-code SHA `583bbc1` changes only this report and the PR draft, so it does not imply another code test run. The [final file manifest](cloudflared-phase4-files.txt) lists the complete proposed diff against upstream main, and the [English PR draft](cloudflared-pr-draft.md) describes scope, validation and outstanding acceptance.
 
 ## Remaining review decisions
 
