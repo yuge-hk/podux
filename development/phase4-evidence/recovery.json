@@ -1,0 +1,15 @@
+{
+  "status": "Passed",
+  "scope": "Linux, synthetic credentials and test connector; no Edge connection",
+  "passed": 7,
+  "checks": [
+    "Two independent real fixture processes with distinct loopback Metrics",
+    "Persisted Tokens are encrypted and API responses omit secrets",
+    "Actual Podux restart restores only autoStart profile with the same external key",
+    "Unexpected fixture child exit recovers through bounded automatic retry",
+    "Manual Stop preserves autoStart policy for the next Podux restart",
+    "Development SQL logs exclude both plaintext and encrypted Token values",
+    "Normal exits reap children, remove Token files and release Metrics ports"
+  ],
+  "realEdge": "Blocked: authorized nonproduction credentials not supplied"
+}

@@ -1,0 +1,8 @@
+{
+  "syntheticCiphertextObservedInOriginalDevSQL": true,
+  "plaintextTokenObserved": false,
+  "fixedBackendLogsExcludeEncryptedToken": true,
+  "SQLLoggerRegressionWithRace": "Passed",
+  "actualApplicationRecoveryChecks": 7,
+  "realEdge": "Blocked: no authorized nonproduction credentials"
+}

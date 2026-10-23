@@ -1,0 +1,88 @@
+
+> podux-web@0.1.6 lint /root/公共/podux/site
+> eslint .
+
+
+/root/公共/podux/site/src/components/LatencyChart.tsx
+  252:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/components/RequireSetup.tsx
+  26:6   warning  React Hook useEffect has a missing dependency: 'checkInitialization'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  34:21  error    Unexpected any. Specify a different type                                                                                @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/contexts/LanguageContext.tsx
+  18:11  error  Empty block statement                                                                                                           no-empty
+  43:13  error  Empty block statement                                                                                                           no-empty
+  80:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/root/公共/podux/site/src/contexts/ThemeContext.tsx
+  38:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/root/公共/podux/site/src/i18n.ts
+  12:9  error  Empty block statement  no-empty
+
+/root/公共/podux/site/src/lib/regex.ts
+  6:42  error  Unnecessary escape character: \-  no-useless-escape
+  6:96  error  Unnecessary escape character: \-  no-useless-escape
+
+/root/公共/podux/site/src/main.tsx
+  12:10  error  Fast refresh only works when a file has exports. Move your component(s) to a separate file  react-refresh/only-export-components
+
+/root/公共/podux/site/src/pages/Dashboard/index.tsx
+  5:3  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+/root/公共/podux/site/src/pages/Login/useLogin.ts
+  25:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/pages/Proxies/ProxiesPage.view.tsx
+  33:12  error  '_loading' is defined but never used  @typescript-eslint/no-unused-vars
+
+/root/公共/podux/site/src/pages/ServerDetail/ServerDetailPage.view.tsx
+  52:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  78:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  96:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/pages/ServerDetail/index.tsx
+  1:1  error  This rule can't verify that `export *` only exports components  react-refresh/only-export-components
+
+/root/公共/podux/site/src/pages/ServerDetail/useServerProxies.ts
+  34:32  error  Unsafe usage of ReturnStatement  no-unsafe-finally
+
+/root/公共/podux/site/src/pages/Servers/useServers.ts
+  99:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/pages/Settings/ChangePasswordDialog.tsx
+  64:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  90:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/pages/Settings/SettingsPage.view.tsx
+  21:7  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/root/公共/podux/site/src/pages/Settings/SettingsPage.view.tsx:21:7
+  19 |     const tab = searchParams.get("tab");
+  20 |     if (tab && tab !== activeTab) {
+> 21 |       setActiveTab(tab);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  22 |     }
+  23 |   }, [searchParams]);
+  24 |  react-hooks/set-state-in-effect
+  23:6  warning  React Hook useEffect has a missing dependency: 'activeTab'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+
+/root/公共/podux/site/src/pages/Setup/useSetup.ts
+   34:6   warning  React Hook useEffect has missing dependencies: 'checkInitialized' and 'navigate'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  100:19  error    Unexpected any. Specify a different type                                                                                              @typescript-eslint/no-explicit-any
+
+/root/公共/podux/site/src/stores/systemStore.ts
+  24:11  error  '_get' is defined but never used          @typescript-eslint/no-unused-vars
+  40:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  64:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 29 problems (26 errors, 3 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

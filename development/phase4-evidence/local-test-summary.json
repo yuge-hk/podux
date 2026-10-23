@@ -1,0 +1,23 @@
+{
+  "go-unit.json": {
+    "passedTests": 28,
+    "failedTests": [],
+    "skippedTests": [
+      "TestOfficialBinary",
+      "TestFRPCTCPUDPReconnectAndCloudflaredCoexistence"
+    ]
+  },
+  "go-race.json": {
+    "passedTests": 28,
+    "failedTests": [],
+    "skippedTests": [
+      "TestOfficialBinary",
+      "TestFRPCTCPUDPReconnectAndCloudflaredCoexistence"
+    ]
+  },
+  "official-binary.json": {
+    "passedTests": 1,
+    "failedTests": [],
+    "skippedTests": []
+  }
+}

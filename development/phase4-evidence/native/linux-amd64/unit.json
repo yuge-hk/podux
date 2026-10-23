@@ -1,0 +1,201 @@
+{"Time":"2026-10-23T13:50:23.096947766Z","Action":"start","Package":"podux"}
+{"Time":"2026-10-23T13:50:23.097006494Z","Action":"output","Package":"podux","Output":"?   \tpodux\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097012413Z","Action":"skip","Package":"podux","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097022739Z","Action":"start","Package":"podux/internal/application/dashboard"}
+{"Time":"2026-10-23T13:50:23.097026194Z","Action":"output","Package":"podux/internal/application/dashboard","Output":"?   \tpodux/internal/application/dashboard\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.09703005Z","Action":"skip","Package":"podux/internal/application/dashboard","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097035869Z","Action":"start","Package":"podux/internal/application/frpc"}
+{"Time":"2026-10-23T13:50:23.097038913Z","Action":"output","Package":"podux/internal/application/frpc","Output":"?   \tpodux/internal/application/frpc\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097041517Z","Action":"skip","Package":"podux/internal/application/frpc","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097047026Z","Action":"start","Package":"podux/internal/application/github"}
+{"Time":"2026-10-23T13:50:23.09705013Z","Action":"output","Package":"podux/internal/application/github","Output":"?   \tpodux/internal/application/github\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097052934Z","Action":"skip","Package":"podux/internal/application/github","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097057952Z","Action":"start","Package":"podux/internal/application/importer"}
+{"Time":"2026-10-23T13:50:23.097060927Z","Action":"output","Package":"podux/internal/application/importer","Output":"?   \tpodux/internal/application/importer\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.09706352Z","Action":"skip","Package":"podux/internal/application/importer","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097068258Z","Action":"start","Package":"podux/internal/application/monitoring"}
+{"Time":"2026-10-23T13:50:23.097071192Z","Action":"output","Package":"podux/internal/application/monitoring","Output":"?   \tpodux/internal/application/monitoring\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097074187Z","Action":"skip","Package":"podux/internal/application/monitoring","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097079084Z","Action":"start","Package":"podux/internal/application/proxy"}
+{"Time":"2026-10-23T13:50:23.097082048Z","Action":"output","Package":"podux/internal/application/proxy","Output":"?   \tpodux/internal/application/proxy\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097084732Z","Action":"skip","Package":"podux/internal/application/proxy","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.09708989Z","Action":"start","Package":"podux/internal/application/server"}
+{"Time":"2026-10-23T13:50:23.097092955Z","Action":"output","Package":"podux/internal/application/server","Output":"?   \tpodux/internal/application/server\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097095649Z","Action":"skip","Package":"podux/internal/application/server","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.097101578Z","Action":"start","Package":"podux/internal/application/system"}
+{"Time":"2026-10-23T13:50:23.097104753Z","Action":"output","Package":"podux/internal/application/system","Output":"?   \tpodux/internal/application/system\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.097107277Z","Action":"skip","Package":"podux/internal/application/system","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.115398536Z","Action":"start","Package":"podux/internal/application/tunnel"}
+{"Time":"2026-10-23T13:50:23.119660624Z","Action":"run","Package":"podux/internal/application/tunnel","Test":"TestRecoveryAndSafeUpdates"}
+{"Time":"2026-10-23T13:50:23.119674185Z","Action":"output","Package":"podux/internal/application/tunnel","Test":"TestRecoveryAndSafeUpdates","Output":"=== RUN   TestRecoveryAndSafeUpdates\n"}
+{"Time":"2026-10-23T13:50:23.248330202Z","Action":"output","Package":"podux/internal/application/tunnel","Test":"TestRecoveryAndSafeUpdates","Output":"--- PASS: TestRecoveryAndSafeUpdates (0.13s)\n"}
+{"Time":"2026-10-23T13:50:23.248361539Z","Action":"pass","Package":"podux/internal/application/tunnel","Test":"TestRecoveryAndSafeUpdates","Elapsed":0.13}
+{"Time":"2026-10-23T13:50:23.248372616Z","Action":"run","Package":"podux/internal/application/tunnel","Test":"TestStopDoesNotBlockOtherProfile"}
+{"Time":"2026-10-23T13:50:23.248376321Z","Action":"output","Package":"podux/internal/application/tunnel","Test":"TestStopDoesNotBlockOtherProfile","Output":"=== RUN   TestStopDoesNotBlockOtherProfile\n"}
+{"Time":"2026-10-23T13:50:23.334966231Z","Action":"output","Package":"podux/internal/application/tunnel","Test":"TestStopDoesNotBlockOtherProfile","Output":"--- PASS: TestStopDoesNotBlockOtherProfile (0.09s)\n"}
+{"Time":"2026-10-23T13:50:23.335000463Z","Action":"pass","Package":"podux/internal/application/tunnel","Test":"TestStopDoesNotBlockOtherProfile","Elapsed":0.09}
+{"Time":"2026-10-23T13:50:23.335008325Z","Action":"output","Package":"podux/internal/application/tunnel","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:23.336186918Z","Action":"output","Package":"podux/internal/application/tunnel","Output":"ok  \tpodux/internal/application/tunnel\t0.221s\n"}
+{"Time":"2026-10-23T13:50:23.336203033Z","Action":"pass","Package":"podux/internal/application/tunnel","Elapsed":0.221}
+{"Time":"2026-10-23T13:50:23.338498948Z","Action":"start","Package":"podux/internal/application/version"}
+{"Time":"2026-10-23T13:50:23.338515263Z","Action":"output","Package":"podux/internal/application/version","Output":"?   \tpodux/internal/application/version\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.33852017Z","Action":"skip","Package":"podux/internal/application/version","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.338530446Z","Action":"start","Package":"podux/internal/domain/proxy"}
+{"Time":"2026-10-23T13:50:23.338548663Z","Action":"output","Package":"podux/internal/domain/proxy","Output":"?   \tpodux/internal/domain/proxy\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.338554803Z","Action":"skip","Package":"podux/internal/domain/proxy","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.33862948Z","Action":"start","Package":"podux/internal/domain/server"}
+{"Time":"2026-10-23T13:50:23.33864266Z","Action":"output","Package":"podux/internal/domain/server","Output":"?   \tpodux/internal/domain/server\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.338648139Z","Action":"skip","Package":"podux/internal/domain/server","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.338733262Z","Action":"start","Package":"podux/internal/domain/tunnel"}
+{"Time":"2026-10-23T13:50:23.338744459Z","Action":"output","Package":"podux/internal/domain/tunnel","Output":"?   \tpodux/internal/domain/tunnel\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:23.338750177Z","Action":"skip","Package":"podux/internal/domain/tunnel","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.917461615Z","Action":"start","Package":"podux/internal/infrastructure/cloudflared"}
+{"Time":"2026-10-23T13:50:23.917579223Z","Action":"start","Package":"podux/internal/infrastructure/credentials"}
+{"Time":"2026-10-23T13:50:23.91963749Z","Action":"run","Package":"podux/internal/infrastructure/credentials","Test":"TestTemporaryTokenPermissionsAndExclusiveCreation"}
+{"Time":"2026-10-23T13:50:23.919660454Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestTemporaryTokenPermissionsAndExclusiveCreation","Output":"=== RUN   TestTemporaryTokenPermissionsAndExclusiveCreation\n"}
+{"Time":"2026-10-23T13:50:23.920512901Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary"}
+{"Time":"2026-10-23T13:50:23.920524899Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Output":"=== RUN   TestOfficialBinary\n"}
+{"Time":"2026-10-23T13:50:23.920540873Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Output":"    integration_test.go:18: set PODUX_TEST_CLOUDFLARED for official binary compatibility checks\n"}
+{"Time":"2026-10-23T13:50:23.920550488Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Output":"--- SKIP: TestOfficialBinary (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.920560633Z","Action":"skip","Package":"podux/internal/infrastructure/cloudflared","Test":"TestOfficialBinary","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.920566512Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestArgs"}
+{"Time":"2026-10-23T13:50:23.920570488Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestArgs","Output":"=== RUN   TestArgs\n"}
+{"Time":"2026-10-23T13:50:23.920576477Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestArgs","Output":"--- PASS: TestArgs (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.920581294Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestArgs","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.92058496Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestEnvironment"}
+{"Time":"2026-10-23T13:50:23.920610458Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestEnvironment","Output":"=== RUN   TestEnvironment\n"}
+{"Time":"2026-10-23T13:50:23.920620183Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestEnvironment","Output":"--- PASS: TestEnvironment (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.920623939Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestEnvironment","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.920628886Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentHelper"}
+{"Time":"2026-10-23T13:50:23.920632191Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentHelper","Output":"=== RUN   TestLinuxParentHelper\n"}
+{"Time":"2026-10-23T13:50:23.920637799Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentHelper","Output":"--- PASS: TestLinuxParentHelper (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.920641936Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentHelper","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.920645822Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentDeath"}
+{"Time":"2026-10-23T13:50:23.920649056Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentDeath","Output":"=== RUN   TestLinuxParentDeath\n"}
+{"Time":"2026-10-23T13:50:23.921623758Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestTemporaryTokenPermissionsAndExclusiveCreation","Output":"--- PASS: TestTemporaryTokenPermissionsAndExclusiveCreation (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.921640783Z","Action":"pass","Package":"podux/internal/infrastructure/credentials","Test":"TestTemporaryTokenPermissionsAndExclusiveCreation","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.921646903Z","Action":"run","Package":"podux/internal/infrastructure/credentials","Test":"TestInsecureKeyAndSymlinkBoundary"}
+{"Time":"2026-10-23T13:50:23.921650318Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestInsecureKeyAndSymlinkBoundary","Output":"=== RUN   TestInsecureKeyAndSymlinkBoundary\n"}
+{"Time":"2026-10-23T13:50:23.922054448Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestInsecureKeyAndSymlinkBoundary","Output":"--- PASS: TestInsecureKeyAndSymlinkBoundary (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.922068048Z","Action":"pass","Package":"podux/internal/infrastructure/credentials","Test":"TestInsecureKeyAndSymlinkBoundary","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.922072305Z","Action":"run","Package":"podux/internal/infrastructure/credentials","Test":"TestVault"}
+{"Time":"2026-10-23T13:50:23.92207562Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestVault","Output":"=== RUN   TestVault\n"}
+{"Time":"2026-10-23T13:50:23.925883217Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentDeath","Output":"--- PASS: TestLinuxParentDeath (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.925902235Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLinuxParentDeath","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.925907553Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestHelperProcess"}
+{"Time":"2026-10-23T13:50:23.925911159Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestHelperProcess","Output":"=== RUN   TestHelperProcess\n"}
+{"Time":"2026-10-23T13:50:23.925915165Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestHelperProcess","Output":"--- PASS: TestHelperProcess (0.00s)\n"}
+{"Time":"2026-10-23T13:50:23.92591883Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestHelperProcess","Elapsed":0}
+{"Time":"2026-10-23T13:50:23.925922195Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLifecycleIsolation"}
+{"Time":"2026-10-23T13:50:23.92592516Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLifecycleIsolation","Output":"=== RUN   TestLifecycleIsolation\n"}
+{"Time":"2026-10-23T13:50:23.951945466Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestVault","Output":"--- PASS: TestVault (0.03s)\n"}
+{"Time":"2026-10-23T13:50:23.951978165Z","Action":"pass","Package":"podux/internal/infrastructure/credentials","Test":"TestVault","Elapsed":0.03}
+{"Time":"2026-10-23T13:50:23.951994099Z","Action":"run","Package":"podux/internal/infrastructure/credentials","Test":"TestWrongKeyIsNeverReplaced"}
+{"Time":"2026-10-23T13:50:23.951997715Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestWrongKeyIsNeverReplaced","Output":"=== RUN   TestWrongKeyIsNeverReplaced\n"}
+{"Time":"2026-10-23T13:50:23.959086024Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Test":"TestWrongKeyIsNeverReplaced","Output":"--- PASS: TestWrongKeyIsNeverReplaced (0.01s)\n"}
+{"Time":"2026-10-23T13:50:23.959105443Z","Action":"pass","Package":"podux/internal/infrastructure/credentials","Test":"TestWrongKeyIsNeverReplaced","Elapsed":0.01}
+{"Time":"2026-10-23T13:50:23.959112504Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:23.959470764Z","Action":"output","Package":"podux/internal/infrastructure/credentials","Output":"ok  \tpodux/internal/infrastructure/credentials\t0.042s\n"}
+{"Time":"2026-10-23T13:50:23.959486378Z","Action":"pass","Package":"podux/internal/infrastructure/credentials","Elapsed":0.042}
+{"Time":"2026-10-23T13:50:24.494598466Z","Action":"start","Package":"podux/internal/infrastructure/persistence"}
+{"Time":"2026-10-23T13:50:24.499026365Z","Action":"run","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelWritesDoNotReachSQLLoggers"}
+{"Time":"2026-10-23T13:50:24.499045624Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelWritesDoNotReachSQLLoggers","Output":"=== RUN   TestTunnelWritesDoNotReachSQLLoggers\n"}
+{"Time":"2026-10-23T13:50:24.66179091Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelWritesDoNotReachSQLLoggers","Output":"--- PASS: TestTunnelWritesDoNotReachSQLLoggers (0.16s)\n"}
+{"Time":"2026-10-23T13:50:24.662616316Z","Action":"pass","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelWritesDoNotReachSQLLoggers","Elapsed":0.16}
+{"Time":"2026-10-23T13:50:24.662629145Z","Action":"run","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelRepository"}
+{"Time":"2026-10-23T13:50:24.662633421Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelRepository","Output":"=== RUN   TestTunnelRepository\n"}
+{"Time":"2026-10-23T13:50:24.70008703Z","Action":"start","Package":"podux/internal/integration"}
+{"Time":"2026-10-23T13:50:24.70664932Z","Action":"run","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectAndCloudflaredCoexistence"}
+{"Time":"2026-10-23T13:50:24.706677853Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectAndCloudflaredCoexistence","Output":"=== RUN   TestFRPCTCPUDPReconnectAndCloudflaredCoexistence\n"}
+{"Time":"2026-10-23T13:50:24.706701559Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectAndCloudflaredCoexistence","Output":"    frpc_regression_test.go:91: set PODUX_TEST_FRPS to the isolated pinned FRPS binary; native CI does so explicitly\n"}
+{"Time":"2026-10-23T13:50:24.706708028Z","Action":"output","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectAndCloudflaredCoexistence","Output":"--- SKIP: TestFRPCTCPUDPReconnectAndCloudflaredCoexistence (0.00s)\n"}
+{"Time":"2026-10-23T13:50:24.706711454Z","Action":"skip","Package":"podux/internal/integration","Test":"TestFRPCTCPUDPReconnectAndCloudflaredCoexistence","Elapsed":0}
+{"Time":"2026-10-23T13:50:24.70671603Z","Action":"output","Package":"podux/internal/integration","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:24.707413949Z","Action":"output","Package":"podux/internal/integration","Output":"ok  \tpodux/internal/integration\t0.007s\n"}
+{"Time":"2026-10-23T13:50:24.707429723Z","Action":"pass","Package":"podux/internal/integration","Elapsed":0.007}
+{"Time":"2026-10-23T13:50:24.804969281Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelRepository","Output":"--- PASS: TestTunnelRepository (0.14s)\n"}
+{"Time":"2026-10-23T13:50:24.80500193Z","Action":"pass","Package":"podux/internal/infrastructure/persistence","Test":"TestTunnelRepository","Elapsed":0.14}
+{"Time":"2026-10-23T13:50:24.805010523Z","Action":"run","Package":"podux/internal/infrastructure/persistence","Test":"TestColdDatabaseAndExternalKeyRestore"}
+{"Time":"2026-10-23T13:50:24.80501459Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestColdDatabaseAndExternalKeyRestore","Output":"=== RUN   TestColdDatabaseAndExternalKeyRestore\n"}
+{"Time":"2026-10-23T13:50:24.807314621Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLifecycleIsolation","Output":"--- PASS: TestLifecycleIsolation (0.88s)\n"}
+{"Time":"2026-10-23T13:50:24.80733376Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLifecycleIsolation","Elapsed":0.88}
+{"Time":"2026-10-23T13:50:24.807341802Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestRestartBudgetAndCancellation"}
+{"Time":"2026-10-23T13:50:24.807345638Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestRestartBudgetAndCancellation","Output":"=== RUN   TestRestartBudgetAndCancellation\n"}
+{"Time":"2026-10-23T13:50:24.932057501Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestRestartBudgetAndCancellation","Output":"--- PASS: TestRestartBudgetAndCancellation (0.12s)\n"}
+{"Time":"2026-10-23T13:50:24.932088197Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestRestartBudgetAndCancellation","Elapsed":0.12}
+{"Time":"2026-10-23T13:50:24.932096059Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestNormalExitDoesNotRestart"}
+{"Time":"2026-10-23T13:50:24.932100035Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestNormalExitDoesNotRestart","Output":"=== RUN   TestNormalExitDoesNotRestart\n"}
+{"Time":"2026-10-23T13:50:25.237935333Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestNormalExitDoesNotRestart","Output":"--- PASS: TestNormalExitDoesNotRestart (0.31s)\n"}
+{"Time":"2026-10-23T13:50:25.238001994Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestNormalExitDoesNotRestart","Elapsed":0.31}
+{"Time":"2026-10-23T13:50:25.238031969Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestForcedStop"}
+{"Time":"2026-10-23T13:50:25.238040732Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestForcedStop","Output":"=== RUN   TestForcedStop\n"}
+{"Time":"2026-10-23T13:50:25.270769433Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Test":"TestColdDatabaseAndExternalKeyRestore","Output":"--- PASS: TestColdDatabaseAndExternalKeyRestore (0.47s)\n"}
+{"Time":"2026-10-23T13:50:25.270800941Z","Action":"pass","Package":"podux/internal/infrastructure/persistence","Test":"TestColdDatabaseAndExternalKeyRestore","Elapsed":0.47}
+{"Time":"2026-10-23T13:50:25.270807741Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:25.274325561Z","Action":"output","Package":"podux/internal/infrastructure/persistence","Output":"ok  \tpodux/internal/infrastructure/persistence\t0.780s\n"}
+{"Time":"2026-10-23T13:50:25.274342838Z","Action":"pass","Package":"podux/internal/infrastructure/persistence","Elapsed":0.78}
+{"Time":"2026-10-23T13:50:25.314419159Z","Action":"start","Package":"podux/internal/interfaces/http"}
+{"Time":"2026-10-23T13:50:25.320222704Z","Action":"run","Package":"podux/internal/interfaces/http","Test":"TestTunnelAPI"}
+{"Time":"2026-10-23T13:50:25.320256465Z","Action":"output","Package":"podux/internal/interfaces/http","Test":"TestTunnelAPI","Output":"=== RUN   TestTunnelAPI\n"}
+{"Time":"2026-10-23T13:50:25.779215471Z","Action":"start","Package":"podux/migrations"}
+{"Time":"2026-10-23T13:50:25.779335573Z","Action":"start","Package":"podux/pkg/buildinfo"}
+{"Time":"2026-10-23T13:50:25.779355483Z","Action":"output","Package":"podux/pkg/buildinfo","Output":"?   \tpodux/pkg/buildinfo\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:25.779364086Z","Action":"skip","Package":"podux/pkg/buildinfo","Elapsed":0}
+{"Time":"2026-10-23T13:50:25.77937341Z","Action":"start","Package":"podux/pkg/response"}
+{"Time":"2026-10-23T13:50:25.779377716Z","Action":"output","Package":"podux/pkg/response","Output":"?   \tpodux/pkg/response\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:25.779381732Z","Action":"skip","Package":"podux/pkg/response","Elapsed":0}
+{"Time":"2026-10-23T13:50:25.779388032Z","Action":"start","Package":"podux/pkg/types"}
+{"Time":"2026-10-23T13:50:25.779392408Z","Action":"output","Package":"podux/pkg/types","Output":"?   \tpodux/pkg/types\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:25.779396625Z","Action":"skip","Package":"podux/pkg/types","Elapsed":0}
+{"Time":"2026-10-23T13:50:25.779402293Z","Action":"start","Package":"podux/pkg/utils"}
+{"Time":"2026-10-23T13:50:25.779406079Z","Action":"output","Package":"podux/pkg/utils","Output":"?   \tpodux/pkg/utils\t[no test files]\n"}
+{"Time":"2026-10-23T13:50:25.779409805Z","Action":"skip","Package":"podux/pkg/utils","Elapsed":0}
+{"Time":"2026-10-23T13:50:25.783171002Z","Action":"run","Package":"podux/migrations","Test":"TestCloudflareMigrationRoundTrip"}
+{"Time":"2026-10-23T13:50:25.783181988Z","Action":"output","Package":"podux/migrations","Test":"TestCloudflareMigrationRoundTrip","Output":"=== RUN   TestCloudflareMigrationRoundTrip\n"}
+{"Time":"2026-10-23T13:50:25.955103581Z","Action":"output","Package":"podux/internal/interfaces/http","Test":"TestTunnelAPI","Output":"--- PASS: TestTunnelAPI (0.63s)\n"}
+{"Time":"2026-10-23T13:50:25.955134748Z","Action":"pass","Package":"podux/internal/interfaces/http","Test":"TestTunnelAPI","Elapsed":0.63}
+{"Time":"2026-10-23T13:50:25.955142329Z","Action":"output","Package":"podux/internal/interfaces/http","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:25.956800422Z","Action":"output","Package":"podux/internal/interfaces/http","Output":"ok  \tpodux/internal/interfaces/http\t0.642s\n"}
+{"Time":"2026-10-23T13:50:25.956823106Z","Action":"pass","Package":"podux/internal/interfaces/http","Elapsed":0.642}
+{"Time":"2026-10-23T13:50:26.006485858Z","Action":"output","Package":"podux/migrations","Test":"TestCloudflareMigrationRoundTrip","Output":"--- PASS: TestCloudflareMigrationRoundTrip (0.22s)\n"}
+{"Time":"2026-10-23T13:50:26.006510655Z","Action":"pass","Package":"podux/migrations","Test":"TestCloudflareMigrationRoundTrip","Elapsed":0.22}
+{"Time":"2026-10-23T13:50:26.006515793Z","Action":"run","Package":"podux/migrations","Test":"TestUpgradePreservesExistingFRPCRecords"}
+{"Time":"2026-10-23T13:50:26.006520079Z","Action":"output","Package":"podux/migrations","Test":"TestUpgradePreservesExistingFRPCRecords","Output":"=== RUN   TestUpgradePreservesExistingFRPCRecords\n"}
+{"Time":"2026-10-23T13:50:26.09640576Z","Action":"output","Package":"podux/migrations","Test":"TestUpgradePreservesExistingFRPCRecords","Output":"--- PASS: TestUpgradePreservesExistingFRPCRecords (0.09s)\n"}
+{"Time":"2026-10-23T13:50:26.096434503Z","Action":"pass","Package":"podux/migrations","Test":"TestUpgradePreservesExistingFRPCRecords","Elapsed":0.09}
+{"Time":"2026-10-23T13:50:26.096441634Z","Action":"output","Package":"podux/migrations","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:26.09740328Z","Action":"output","Package":"podux/migrations","Output":"ok  \tpodux/migrations\t0.318s\n"}
+{"Time":"2026-10-23T13:50:26.097420526Z","Action":"pass","Package":"podux/migrations","Elapsed":0.318}
+{"Time":"2026-10-23T13:50:27.49635471Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestForcedStop","Output":"--- PASS: TestForcedStop (2.26s)\n"}
+{"Time":"2026-10-23T13:50:27.496422212Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestForcedStop","Elapsed":2.26}
+{"Time":"2026-10-23T13:50:27.496429983Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsConflict"}
+{"Time":"2026-10-23T13:50:27.496433779Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsConflict","Output":"=== RUN   TestMetricsConflict\n"}
+{"Time":"2026-10-23T13:50:27.506821176Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsConflict","Output":"--- PASS: TestMetricsConflict (0.01s)\n"}
+{"Time":"2026-10-23T13:50:27.506835828Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsConflict","Elapsed":0.01}
+{"Time":"2026-10-23T13:50:27.506839834Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestBoundedLogs"}
+{"Time":"2026-10-23T13:50:27.506842358Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestBoundedLogs","Output":"=== RUN   TestBoundedLogs\n"}
+{"Time":"2026-10-23T13:50:27.513057918Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestBoundedLogs","Output":"--- PASS: TestBoundedLogs (0.01s)\n"}
+{"Time":"2026-10-23T13:50:27.513082775Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestBoundedLogs","Elapsed":0.01}
+{"Time":"2026-10-23T13:50:27.513090387Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestDataDirectoryLock"}
+{"Time":"2026-10-23T13:50:27.513094343Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestDataDirectoryLock","Output":"=== RUN   TestDataDirectoryLock\n"}
+{"Time":"2026-10-23T13:50:27.513339323Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestDataDirectoryLock","Output":"--- PASS: TestDataDirectoryLock (0.00s)\n"}
+{"Time":"2026-10-23T13:50:27.513349498Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestDataDirectoryLock","Elapsed":0}
+{"Time":"2026-10-23T13:50:27.513354055Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestShutdownRejectsStarts"}
+{"Time":"2026-10-23T13:50:27.51335772Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestShutdownRejectsStarts","Output":"=== RUN   TestShutdownRejectsStarts\n"}
+{"Time":"2026-10-23T13:50:27.790434739Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestShutdownRejectsStarts","Output":"--- PASS: TestShutdownRejectsStarts (0.28s)\n"}
+{"Time":"2026-10-23T13:50:27.790471204Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestShutdownRejectsStarts","Elapsed":0.28}
+{"Time":"2026-10-23T13:50:27.790479596Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsParsingAndStaleFiles"}
+{"Time":"2026-10-23T13:50:27.790483693Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsParsingAndStaleFiles","Output":"=== RUN   TestMetricsParsingAndStaleFiles\n"}
+{"Time":"2026-10-23T13:50:28.046952589Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsParsingAndStaleFiles","Output":"--- PASS: TestMetricsParsingAndStaleFiles (0.26s)\n"}
+{"Time":"2026-10-23T13:50:28.046989435Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestMetricsParsingAndStaleFiles","Elapsed":0.26}
+{"Time":"2026-10-23T13:50:28.04699948Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestInternalFixedMetricsConflict"}
+{"Time":"2026-10-23T13:50:28.047003566Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestInternalFixedMetricsConflict","Output":"=== RUN   TestInternalFixedMetricsConflict\n"}
+{"Time":"2026-10-23T13:50:28.590299449Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestInternalFixedMetricsConflict","Output":"--- PASS: TestInternalFixedMetricsConflict (0.54s)\n"}
+{"Time":"2026-10-23T13:50:28.590328734Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestInternalFixedMetricsConflict","Elapsed":0.54}
+{"Time":"2026-10-23T13:50:28.590334202Z","Action":"run","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLogEpochChangesAcrossManagerRestart"}
+{"Time":"2026-10-23T13:50:28.590340061Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLogEpochChangesAcrossManagerRestart","Output":"=== RUN   TestLogEpochChangesAcrossManagerRestart\n"}
+{"Time":"2026-10-23T13:50:28.590530007Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLogEpochChangesAcrossManagerRestart","Output":"--- PASS: TestLogEpochChangesAcrossManagerRestart (0.00s)\n"}
+{"Time":"2026-10-23T13:50:28.590539031Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Test":"TestLogEpochChangesAcrossManagerRestart","Elapsed":0}
+{"Time":"2026-10-23T13:50:28.590544429Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Output":"PASS\n"}
+{"Time":"2026-10-23T13:50:28.591157495Z","Action":"output","Package":"podux/internal/infrastructure/cloudflared","Output":"ok  \tpodux/internal/infrastructure/cloudflared\t4.674s\n"}
+{"Time":"2026-10-23T13:50:28.59116793Z","Action":"pass","Package":"podux/internal/infrastructure/cloudflared","Elapsed":4.674}

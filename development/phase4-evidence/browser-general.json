@@ -1,0 +1,23 @@
+{
+  "passed": 18,
+  "checks": [
+    "Unauthenticated /tunnels redirects to existing login",
+    "Existing login and empty Tunnel page",
+    "Create two real persisted profiles through the form",
+    "Edit retains empty Token and saves full advanced config",
+    "Profiles persist after page reload",
+    "Mobile Start 202 is observed as local invalid-token failure, not connected",
+    "Mobile Restart calls actual backend",
+    "Mobile edit/save",
+    "Mobile create, scrollable form and advanced settings",
+    "Mobile details and safe logs",
+    "390px no global horizontal overflow",
+    "Mobile Stop request (UI running state fixture; real backend endpoint)",
+    "Chinese dark theme",
+    "320px no horizontal overflow",
+    "Existing server/proxy/dashboard pages render with authenticated real APIs",
+    "Confirmed deletion updates real persisted list",
+    "Unavailable binary UI degrades with editing retained (capability fixture)",
+    "No Tunnel Token in browser storage, displayed text, URL or console; no page errors"
+  ]
+}

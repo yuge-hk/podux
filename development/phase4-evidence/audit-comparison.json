@@ -1,0 +1,13 @@
+{
+  "goReachableAdvisoryCount": 54,
+  "goNewAdvisoryIDsVsBaseline": [],
+  "frontendSeverities": {
+    "info": 0,
+    "low": 2,
+    "moderate": 23,
+    "high": 42,
+    "critical": 0
+  },
+  "frontendNewAdvisoryIDsVsBaseline": [],
+  "status": "Failed: baseline findings remain; no newly introduced advisory IDs"
+}
