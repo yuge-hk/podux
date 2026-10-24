@@ -258,7 +258,7 @@ func (m *Manager) finish(i *instance, phase, last string) {
 	i.status.Protocol = "unknown"
 	i.status.MetricsAddress = ""
 	i.status.NextRetry = ""
-	if last != "" {
+	if last != "" || phase == "stopped" {
 		i.status.LastError = last
 	}
 	i.mu.Unlock()
@@ -441,6 +441,10 @@ func (s *outputSink) line(line string) {
 	}
 	if strings.Contains(line, " ERR ") || strings.Contains(line, `"level":"error"`) {
 		s.instance.mu.Lock()
+		if s.instance.status.Phase == "stopping" || s.instance.status.Phase == "stopped" {
+			s.instance.mu.Unlock()
+			return
+		}
 		s.instance.status.LastError = "cloudflared reported a connection error"
 		s.instance.mu.Unlock()
 		s.instance.event("cloudflared reported a connection error")

@@ -1,6 +1,6 @@
 # Local Cloudflare Tunnel management
 
-Open **Cloudflare Tunnel** in the authenticated navigation. This page manages
+Open **Servers → Cloudflare Tunnel** in the authenticated navigation. The former `/tunnels` link redirects to this server tab. This page manages
 local cloudflared connectors for existing Tunnel tokens, without account, DNS,
 Access, cloud-side Tunnel creation or ingress management.
 

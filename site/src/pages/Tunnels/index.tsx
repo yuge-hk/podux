@@ -8,7 +8,7 @@ import { TunnelsPageView } from "./TunnelsPage.view";
 import { TunnelForm } from "./TunnelForm";
 import { TunnelDetail } from "./TunnelDetail";
 import "./Tunnels.css";
-export function TunnelsPage() {
+export function TunnelsPage({ embedded = false }: { embedded?: boolean }) {
   const { t } = useTranslation();
   const state = useTunnels();
   const [editing, setEditing] = useState<Tunnel | "new">();
@@ -45,6 +45,7 @@ export function TunnelsPage() {
     <>
       <TunnelsPageView
         {...state}
+        embedded={embedded}
         onAdd={() => setEditing("new")}
         onEdit={setEditing}
         onDetail={setDetail}

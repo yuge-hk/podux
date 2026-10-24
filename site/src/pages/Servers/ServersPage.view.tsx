@@ -24,6 +24,7 @@ import { ServerLocation } from "../../components/ServerLocation";
 import { useTranslation } from "react-i18next";
 
 interface ServersViewProps {
+  embedded?: boolean;
   servers: Server[];
   loading?: boolean;
   refreshing: boolean;
@@ -39,6 +40,7 @@ interface ServersViewProps {
 }
 
 export function ServersView({
+  embedded = false,
   servers,
   loading,
   refreshing,
@@ -78,11 +80,13 @@ export function ServersView({
     <>
       <Flex direction="column" gap="5" className="flex flex-1 flex-col">
         {/* Header */}
-        <PageHeader
-          title={t("server.title")}
-          description={t("server.manageServers")}
-          visible={mounted}
-        />
+        {!embedded && (
+          <PageHeader
+            title={t("server.title")}
+            description={t("server.manageServers")}
+            visible={mounted}
+          />
+        )}
         {/* Stats Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <motion.div

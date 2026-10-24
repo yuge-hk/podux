@@ -62,11 +62,6 @@ const navItems = [
     path: "/proxies",
     icon: <Icon icon="lucide:network" width="18" height="18" />,
   },
-  {
-    labelKey: "nav.tunnels",
-    path: "/tunnels",
-    icon: <Icon icon="lucide:cloud" width="18" height="18" />,
-  },
 ];
 
 const mobileBottomNavItems = navItems;

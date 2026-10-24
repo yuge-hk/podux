@@ -130,7 +130,7 @@
     "tls": "TLS",
     "enabled": "Enabled",
     "disabled": "Disabled",
-    "manageServers": "Manage your FRP server connections",
+    "manageServers": "Manage FRPC servers and Cloudflare Tunnel connectors",
     "allServers": "All Servers",
     "searchServers": "Search servers...",
     "refresh": "Refresh",

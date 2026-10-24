@@ -1,6 +1,7 @@
 # Cloudflare Tunnel 本地管理
 
-在登录后的主导航选择 **Cloudflare Tunnel**。此页面管理已有 Tunnel 的本机
+在登录后的主导航选择 **服务器 → Cloudflare Tunnel**，与 FRPC 共用服务器管理页。
+旧 `/tunnels` 链接会跳转到对应标签。此页面管理已有 Tunnel 的本机
 cloudflared 连接器，不创建云端 Tunnel，也不管理账号、DNS、Ingress 或 Access。
 
 ## 准备

@@ -5,11 +5,13 @@ export function TunnelActions({
   status,
   busy,
   available,
+  hasToken,
   onAction,
 }: {
   status?: TunnelStatus;
   busy: boolean;
   available: boolean;
+  hasToken: boolean;
   onAction: (action: Action) => void;
 }) {
   const { t } = useTranslation();
@@ -19,7 +21,7 @@ export function TunnelActions({
       <Button
         size="1"
         variant="soft"
-        disabled={busy || !available || !stopped}
+        disabled={busy || !available || !hasToken || !stopped}
         onClick={() => onAction("start")}
       >
         {t("tunnels.start")}
@@ -35,7 +37,7 @@ export function TunnelActions({
       <Button
         size="1"
         variant="soft"
-        disabled={busy || !available || !status || status.phase === "stopping"}
+        disabled={busy || !available || !hasToken || !status || status.phase === "stopping"}
         onClick={() => onAction("restart")}
       >
         {t("tunnels.restart")}

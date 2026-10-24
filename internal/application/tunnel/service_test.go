@@ -13,6 +13,13 @@ import (
 	"time"
 )
 
+type overrideRecordRepository struct {
+	d.Repository
+	record d.Record
+}
+
+func (r overrideRecordRepository) Get(string) (d.Record, error) { return r.record, nil }
+
 type fakeRunner struct {
 	started []string
 	stopped []string
@@ -57,6 +64,24 @@ func TestRecoveryAndSafeUpdates(t *testing.T) {
 	b, e := s.Create(d.Write{Config: c, Token: &token})
 	if e != nil {
 		t.Fatal(e)
+	}
+	// Missing metadata and decrypted-empty credentials must never reach the runner.
+	for _, missing := range []bool{true, false} {
+		invalid := a
+		if missing {
+			invalid.HasToken = false
+		} else {
+			invalid.Ciphertext, _ = v.Encrypt(a.ID, "")
+		}
+		guard := NewService(overrideRecordRepository{repo, invalid}, v, f)
+		for _, command := range []string{"start", "restart"} {
+			if err := guard.command(a.ID, command); err != d.ErrCredentials {
+				t.Fatalf("unguarded %s: %v", command, err)
+			}
+		}
+	}
+	if len(f.started) != 0 || len(f.stopped) != 0 {
+		t.Fatal("missing Token reached runner")
 	}
 	// A manually started non-autoStart tunnel is not restored.
 	if e = s.Start(a.ID); e != nil {

@@ -1,6 +1,6 @@
 # Cloudflare Tunnel Phase 4 acceptance and PR review
 
-## Current decision
+## Phase 4 decision (historical)
 
 **Code/PR preparation is complete for review; live Edge acceptance is Blocked.** No authorized nonproduction Tunnel Token or test origin was provided. No production credential was read or borrowed. No Cloudflare Edge/public-origin success is claimed, and no upstream PR has been created.
 
@@ -151,3 +151,23 @@ The sole required user action is to log in to this test WebUI using the private 
 **Live Edge status remains Blocked pending those manual replacements.** Successful Edge connections, dual-profile independence, real Start/Stop/Restart, whole-application autoStart recovery, abnormal-exit retries and Dashboard correlation have not yet run. Future automation may use existing authenticated status/control endpoints and safe Metrics fields; it must not retrieve, decrypt or copy the saved Tokens or capture browser request bodies. Token replacement stays a manual UI action. Optional public-origin testing additionally depends on an existing authorized dedicated route/domain; no public HTTP success is claimed.
 
 Local preparation proof and lifecycle helper remain private under the runtime directory; only non-secret status fields are collected. No real-token leak audit is claimed before live data exists. Historical FRPC race failures, existing frontend lint errors and baseline dependency findings remain as disclosed above. The English Draft PR text is updated to distinguish a ready test environment from completed live acceptance. No upstream PR has been created.
+
+
+## Phase 5B follow-up — integrated server management and stop-error correction
+
+The user reported normal connection behavior but observed a connection-error message on Stop, requested integration into the Servers page, and requested Start prevention without a Token. This follow-up changes only the Cloudflare runner/application guards, related UI wiring and documentation/tests. FRPC implementation and FRP dependency remain unchanged.
+
+Root cause: cloudflared emits ERR-level connection-close output during graceful cancellation. The output sink previously mapped every ERR to LastError, and a normal stop retained that field. The sink now ignores connection errors in stopping/stopped phases, while normal completion clears current error state. Genuine runtime errors and historical events remain visible. A real-child regression emits ERR during graceful termination, verifies no false stop failure, and separately proves active-runtime errors are still reported.
+
+Cloudflare is now a tab in `/servers?type=cloudflare`, sharing the server header, Radix components and existing Tailwind card/grid conventions. `/tunnels` redirects there, and the separate navigation entry is removed. FRPC hooks mount only in their own tab. Existing server-view behavior is retained with an optional embedded-header flag. Missing-Token profiles disable both Start and Restart; the backend rejects absent credential metadata/ciphertext or invalid decrypted Token structures before either operation can reach the runner. Creating a profile still requires Token input, and blank Token edits continue to preserve an existing credential.
+
+Actual local validation for this revision:
+
+- Passed: 70 frontend tests, including missing-Token controls and URL-driven server-tab switching/lazy FRPC mounting.
+- Passed: frontend TypeScript/production build and targeted ESLint. Existing repository-wide lint/dependency findings remain disclosed; no unrelated cleanup or dependency upgrade is included.
+- Passed: runner/application tests with `go test -race`, including graceful shutdown output and missing/empty credential guards.
+- Passed: real-browser legacy-route redirect, removal of separate navigation, both server tabs and 390px viewport without horizontal overflow. Initial browser probes read tab state before React committed navigation and measured immediately after viewport resize; probes were corrected to wait for selected-tab/layout completion, without relaxing product assertions.
+- Passed: isolated local instance updated using its existing paired data/key; only its test processes restarted. Saved Tokens were not read, decrypted, exported or replayed by automation. Pre-update running/stopped choices were restored.
+- Passed live regression: `podux-test-b` observed running/ready, protocol QUIC, two HA connections. Manual Stop returned stopped with no LastError and no new connection-error event. Manual Start restored running/ready, QUIC and two connections. `podux-test-a` was left stopped. Safe proof is local at `/root/公共/podux-phase5b-runtime/stop-fix-proof.json`; browser proof is in the same private runtime directory.
+
+This supersedes the earlier blanket Edge Blocked statement for **one connector's observed readiness and Stop/Start behavior only**. Dual live Tunnels, Dashboard comparison, real abnormal-exit retry and public-origin responses are not claimed verified by this follow-up. No plaintext Token, database, encryption key, login/session credential or raw child output is published. The former 90-file manifest gains the two existing Servers source paths and their new integration test; the manifest is regenerated from the actual upstream diff. Historical test counts/SHAs remain historical, and old native CI is not presented as a test of this revision. No upstream PR was created.

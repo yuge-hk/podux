@@ -4,11 +4,11 @@ feat: manage local Cloudflare Tunnel connectors
 
 # Submission state
 
-Prepared for a **Draft** PR. No upstream PR has been created; submission requires explicit user authorization. Live Edge acceptance remains Blocked.
+Prepared for a **Draft** PR. No upstream PR has been created; submission requires explicit user authorization. One dedicated connector now has observed live Edge readiness and a verified Stop/Start regression; dual-Tunnel/Dashboard/public-origin acceptance remains outstanding.
 
 # PR description
 
-Podux currently manages FRPC clients but has no lifecycle controls for existing Cloudflare Tunnel connectors. This adds an authenticated Tunnel page and independent backend runner so users can save multiple token-based profiles, run them concurrently, and start/stop/restart each one separately.
+Podux currently manages FRPC clients but has no lifecycle controls for existing Cloudflare Tunnel connectors. This adds a Cloudflare Tunnel tab to the existing authenticated Servers page and an independent backend runner so users can save multiple token-based profiles, run them concurrently, and start/stop/restart each one separately.
 
 ## Behavior and scope
 
@@ -30,7 +30,7 @@ Install cloudflared >=2025.4.0 separately; startup also verifies token-file/flag
 
 ## Validation
 
-The [Phase 4 report](cloudflared-phase4-validation.md) records exact commits, native Actions links, build/test counts, screenshots, security review and outstanding items. Locally, frontend build/type checking, 68 frontend tests, targeted lint, backend build/vet, 28 offline Go tests and their race run passed. Official cloudflared 2026.10.3 local invalid-token checks passed. Browser scenarios cover 18 general plus 9 real test-connector lifecycle checks; seven additional actual Podux restart/recovery checks passed in a disposable Linux environment.
+The [Phase 4 report](cloudflared-phase4-validation.md) records exact commits, native Actions links, build/test counts, screenshots, security review and outstanding items. Locally, frontend build/type checking, 70 frontend tests, targeted lint, backend build/vet, 28 offline Go tests and their race run passed. Official cloudflared 2026.10.3 local invalid-token checks passed. Browser scenarios cover 18 general plus 9 real test-connector lifecycle checks; seven additional actual Podux restart/recovery checks passed in a disposable Linux environment.
 
 Fresh [native run 39964271753](https://github.com/yuge-hk/podux/actions/runs/39964271753), executable-code SHA `583bbc19d1779431b1a0dec4ab47364a3d64a5a1`, passed Linux amd64/arm64, Windows amd64 and macOS arm64 Cloudflare unit/race/official-binary checks and functional FRPC regression. Overall CI Failed: the unchanged FRP v0.68.0 race reproduced on both Linux platforms and Windows; macOS did not reproduce it this run. The independent mainline control and full historical evidence are retained via immutable archive links rather than thousands of generated lines in this feature diff. Existing full-frontend lint/dependency audit findings are disclosed in the report, not claimed resolved.
 
@@ -40,10 +40,17 @@ Phase 5B now provides an isolated loopback Podux instance with its own database/
 
 ## Outstanding acceptance / review notes
 
-- Real Cloudflare Edge connections and public-origin reachability are **Blocked** without authorized nonproduction credentials. Fixture readiness and invalid-token tests are not substitutes for live acceptance. No production Token was used.
+- Live acceptance is **partial**: one dedicated nonproduction connector has observed QUIC readiness and verified Stop/Start behavior. Two simultaneous live connectors, Dashboard comparison, abnormal-exit recovery and public-origin reachability remain unverified in the recorded evidence. Fixture readiness and invalid-token tests are not substitutes for those checks. No production Token was used.
 - FRP upstream merged [UDPProxy fix #5585](https://github.com/fatedier/frp/pull/5585) and [xlog fix #5586](https://github.com/fatedier/frp/pull/5586). Podux still pins v0.68.0, so those fixes are not present here and prior failed checks are not reclassified as Passed. An FRP upgrade belongs in a separate change.
 - This is a review draft, not a claim of complete live acceptance or merge readiness. No upstream PR has been created.
 
 ## Suggested review split
 
 The feature can remain one coherent backend/migration/UI/docs change, with FRP dependency remediation kept separate. If maintainers prefer smaller reviews, split the backend/migration/tests first and UI/docs second while retaining the complete implementation in the Fork. Historical race investigations and generated evidence already live in a separate archive and need not be merged as product source.
+
+
+## Latest UI/lifecycle follow-up
+
+Cloudflare connectors now share the Servers page/header, Radix tabs and card/grid styling; no separate navigation item remains. Legacy `/tunnels` links redirect to `/servers?type=cloudflare`. FRPC backend behavior is unchanged. Profiles without stored Tokens disable Start/Restart, and server-side checks reject missing metadata or invalid decrypted Token structures before runner invocation.
+
+Graceful shutdown's connection-close ERR output is no longer misclassified as a runtime connection fault. Current error state clears on normal stop; existing real error history remains available. Regression tests retain active-runtime error reporting. Local verification passed 70 frontend tests, frontend build/targeted lint, race tests for the runner/application packages and browser navigation/mobile checks. In the dedicated local test instance, one live connector showed QUIC readiness with two connections; Stop produced neither a lastError nor a new connection-error event, and Start restored readiness. No plaintext Token was inspected or exported. This does not claim two simultaneous real tunnels, Dashboard agreement or public-origin acceptance. Earlier full native CI/FRPC failure records remain unchanged; they do not validate this new revision automatically.

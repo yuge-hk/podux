@@ -36,7 +36,7 @@ jobs:
       - run: pnpm --dir site install --frozen-lockfile
       - run: pnpm --dir site exec tsc -b
       - run: pnpm --dir site run test
-      - run: pnpm --dir site exec eslint src/pages/Tunnels src/test src/App.tsx src/layouts/MainLayout.tsx vitest.config.ts
+      - run: pnpm --dir site exec eslint src/pages/Servers/index.tsx src/pages/Servers/Servers.test.tsx src/pages/Tunnels src/test src/App.tsx src/layouts/MainLayout.tsx vitest.config.ts
       - run: pnpm --dir site run build
       - uses: actions/upload-artifact@v4
         with:

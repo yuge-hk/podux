@@ -68,8 +68,10 @@ Hard-coded values such as `#22c55e`, `#E5484D`, `#30A46C`, and `#6b7280` remain 
 
 ## Cloudflare Tunnel WebUI
 
-The authenticated `/tunnels` route uses the existing MainLayout and app auth/setup
-guards; its navigation item is appended after the existing FRPC items. The
+Cloudflare Tunnel is managed within `/servers?type=cloudflare`, using the same
+server-page header and Radix Tabs for FRPC/Cloudflare. `/tunnels` redirects there;
+there is no separate sidebar entry. Existing auth/setup guards remain. FRPC hooks
+mount only within the FRPC tab. Missing-Token profiles cannot Start or Restart. The
 [page controller](../site/src/pages/Tunnels/index.tsx) and
 [view](../site/src/pages/Tunnels/TunnelsPage.view.tsx) reuse PageHeader, EmptyState,
 Radix Card/Dialog/AlertDialog, FormItem and Sonner. The scoped

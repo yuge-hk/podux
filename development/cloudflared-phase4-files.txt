@@ -74,6 +74,9 @@ site/src/App.tsx
 site/src/layouts/MainLayout.tsx
 site/src/locales/en.json
 site/src/locales/zh.json
+site/src/pages/Servers/Servers.test.tsx
+site/src/pages/Servers/ServersPage.view.tsx
+site/src/pages/Servers/index.tsx
 site/src/pages/Tunnels/TunnelDetail.tsx
 site/src/pages/Tunnels/TunnelForm.tsx
 site/src/pages/Tunnels/Tunnels.css

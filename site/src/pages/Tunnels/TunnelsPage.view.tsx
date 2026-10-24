@@ -14,6 +14,7 @@ import {
 import { TunnelStatus } from "./components/TunnelStatus";
 import { TunnelActions } from "./components/TunnelActions";
 interface Props {
+  embedded?: boolean;
   items: Tunnel[];
   statuses: Record<string, Status>;
   caps?: Capabilities;
@@ -32,7 +33,7 @@ export function TunnelsPageView(p: Props) {
   const unknown = t("tunnels.unknown");
   return (
     <Flex direction="column" gap="5" className="tunnels-page">
-      <PageHeader title={t("tunnels.title")} description={t("tunnels.subtitle")} />
+      {!p.embedded && <PageHeader title={t("tunnels.title")} description={t("tunnels.subtitle")} />}
       <Flex gap="3" justify="between" wrap="wrap">
         <Badge color={p.caps?.available ? "green" : "gray"}>
           {t(p.caps?.available ? "tunnels.available" : "tunnels.unavailable")} ·{" "}
@@ -75,7 +76,7 @@ export function TunnelsPageView(p: Props) {
       ) : !p.items.length && p.error === undefined ? (
         <EmptyState title={t("tunnels.empty")} description={t("tunnels.emptyHelp")} />
       ) : (
-        <div className="tunnel-grid">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {p.items.map((item) => {
             const status = p.statuses[item.id];
             const restart =
@@ -122,6 +123,7 @@ export function TunnelsPageView(p: Props) {
                       status={status}
                       busy={!!p.pending[item.id]}
                       available={!!p.caps?.available}
+                      hasToken={item.hasToken}
                       onAction={(a) => p.onAction(item.id, a)}
                     />
                     <Flex gap="3" wrap="wrap">

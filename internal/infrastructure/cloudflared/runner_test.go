@@ -74,6 +74,7 @@ func TestHelperProcess(t *testing.T) {
 	signal.Notify(ch, os.Interrupt)
 	notifyTerm(ch)
 	<-ch
+	fmt.Fprintln(os.Stderr, " ERR connection canceled during graceful shutdown")
 	os.Exit(0)
 }
 func manager(t *testing.T, mode string) *Manager {
@@ -335,5 +336,32 @@ func TestLogEpochChangesAcrossManagerRestart(t *testing.T) {
 	b := NewManager(Binary{}, t.TempDir())
 	if a.LogEpoch() == "" || a.LogEpoch() == b.LogEpoch() {
 		t.Fatal("log epochs must identify manager lifetime")
+	}
+}
+
+func TestStopDoesNotReportShutdownConnectionErrors(t *testing.T) {
+	m := manager(t, "serve")
+	r := record("aaaaaaaaaaaaaaa")
+	if err := m.Start(r, "synthetic-test-only"); err != nil {
+		t.Fatal(err)
+	}
+	await(t, m, r.ID, "running")
+	if err := m.Stop(r.ID); err != nil {
+		t.Fatal(err)
+	}
+	if status := m.Status(r.ID); status.Phase != "stopped" || status.LastError != "" {
+		t.Fatalf("unexpected stopped status: %+v", status)
+	}
+	for _, log := range m.Logs(r.ID, 0) {
+		if log.Message == "cloudflared reported a connection error" {
+			t.Fatal("shutdown reported as connection failure")
+		}
+	}
+	// Real runtime errors must still be recorded.
+	i := &instance{status: d.Status{Phase: "running"}}
+	sink := &outputSink{instance: i}
+	sink.line(" ERR synthetic connection failure")
+	if i.status.LastError == "" {
+		t.Fatal("runtime error suppressed")
 	}
 }

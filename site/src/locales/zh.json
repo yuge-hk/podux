@@ -130,7 +130,7 @@
     "tls": "TLS",
     "enabled": "已启用",
     "disabled": "已禁用",
-    "manageServers": "管理您的 FRP 服务器连接",
+    "manageServers": "管理 FRPC 服务器和 Cloudflare Tunnel 连接器",
     "allServers": "所有服务器",
     "searchServers": "搜索服务器...",
     "refresh": "刷新",

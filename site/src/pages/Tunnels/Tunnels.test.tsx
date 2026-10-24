@@ -461,3 +461,12 @@ it("resets logs across server epochs even when a restarted cursor exceeds the ol
   expect(await screen.findByText("1 new beginning")).toBeInTheDocument();
   expect(screen.queryByText("5 old event")).not.toBeInTheDocument();
 });
+
+it("disables start and restart when the profile has no Token", async () => {
+  vi.mocked(tunnelAPI.list).mockResolvedValue({ items: [{ ...item, hasToken: false }] });
+  renderUI(<TunnelsPage />);
+  await screen.findByText("Home");
+  expect(screen.getByRole("button", { name: i18n.t("tunnels.start") })).toBeDisabled();
+  expect(screen.getByRole("button", { name: i18n.t("tunnels.restart") })).toBeDisabled();
+  expect(tunnelAPI.control).not.toHaveBeenCalled();
+});

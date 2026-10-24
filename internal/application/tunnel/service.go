@@ -219,11 +219,11 @@ func (s *Service) command(id, action string) (err error) {
 	if action == "stop" {
 		return s.runner.Stop(id)
 	}
-	if s.vault == nil {
+	if s.vault == nil || !r.HasToken || r.Ciphertext == "" {
 		return d.ErrCredentials
 	}
 	token, e := s.vault.Decrypt(id, r.Ciphertext)
-	if e != nil {
+	if e != nil || !validToken(strings.TrimSpace(token)) {
 		return d.ErrCredentials
 	}
 	switch action {
